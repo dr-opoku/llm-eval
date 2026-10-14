@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "llm-eval report 1.0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "benchmark_sha256",
+    "run_sha256",
+    "provenance",
+    "policy",
+    "evidence_scope",
+    "deployment_readiness",
+    "selection",
+    "configurations",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "benchmark_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "run_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evidence_scope": {
+      "enum": [
+        "illustrative",
+        "supplied_task_sample_only"
+      ]
+    },
+    "deployment_readiness": {
+      "const": "not_established"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "policy": {
+      "type": "object"
+    },
+    "selection": {
+      "type": "object",
+      "required": [
+        "candidate_ids",
+        "automatic_winner",
+        "reason"
+      ],
+      "properties": {
+        "candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "automatic_winner": {
+          "type": "null"
+        },
+        "reason": {
+          "type": "string"
+        }
+      }
+    },
+    "configurations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "configuration_id",
+          "outcome",
+          "checks",
+          "observed_records",
+          "expected_records",
+          "accepted_records",
+          "cases"
+        ],
+        "properties": {
+          "configuration_id": {
+            "type": "string"
+          },
+          "outcome": {
+            "enum": [
+              "meets_sample_rules",
+              "does_not_meet_sample_rules",
+              "insufficient_evidence"
+            ]
+          },
+          "checks": {
+            "type": "object",
+            "additionalProperties": {
+              "enum": [
+                "pass",
+                "fail",
+                "unknown",
+                "not_required"
+              ]
+            }
+          },
+          "observed_records": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "expected_records": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "accepted_records": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "cases": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# llm-eval
+
+Task-specific configuration evaluation. Project JSON contracts are version 1.0, not an industry interoperability standard.
+
+- Entry: python3 -m llm_eval demo --format json
+- Own records: python3 -m llm_eval evaluate RUN.json --benchmark BENCHMARK.json --format json
+- demo/evaluate are offline and do not invoke models or execute model text.
+- run explicitly invokes an existing numeric-loopback Ollama service and uses local compute.
+- Included sample configurations, answers, times and costs are synthetic, not real model results.
+- Inspect provenance.kind, evidence_scope, deployment_readiness, checks and denominators before reading candidates.
+- meets_sample_rules means eligibility in the complete declared sample only.
+- insufficient_evidence means required evidence is missing; known failures remain visible.
+- selection.automatic_winner is null; deployment_readiness is not_established.
+- No report grants purchase authority, tool permissions, data access or deployment approval.
+- Exact fields/labels/evidence IDs are graded. Free-form reason truth is not graded.
+- Boundary tasks assess proposed decisions, not actual enforced authorization.
+- Missing costs and durations are unknown, never zero.
+- Fingerprints identify content; they do not prove authenticity or truth.
+- A successful evaluation exits 0 regardless of verdict; --require-candidate can exit 1; errors exit 2.
+- Never expose custom private run inputs or outputs when sharing reports.
+
+Related independent examples: https://github.com/dr-opoku/dataqmonitor and https://github.com/dr-opoku/resqmonitor

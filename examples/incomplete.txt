@@ -1,0 +1,26 @@
+llm-eval — task-specific configuration assessment
+Evidence: illustrative (synthetic)
+Production suitability: not established
+
+SYNTHETIC EXAMPLE: answers, timings and costs are authored fixtures.
+These are not measurements of real models.
+
+sample-fast: insufficient_evidence
+  Accepted: 1/1 observed; matrix coverage 1/27
+  Boundary requirement failures: 0; execution errors: 0
+  p95 full-request latency: unknown (0 observations; complete=False)
+  Cost per accepted result: unknown
+  Checks: matrix_complete=unknown, distinct_case_minimum=unknown, case_acceptance=fail, boundary_cases=unknown, latency=unknown, cost=not_required
+
+Configurations meeting the declared sample rules: none
+Automatic winner: none
+
+Limits:
+- Exact labels, fields and evidence IDs are checked; the explanation's truth is not graded.
+- Boundary cases examine proposed decisions, not executed tools or enforced authorization.
+- Repeated attempts on the same cases do not establish independent or representative evidence.
+- Reported timing and supplied costs are configuration-specific; comparability requires review.
+- Fingerprints establish content identity, not authorship, external authenticity or truth.
+
+Benchmark SHA-256: efdc60450ac22c747e0be961be33b69660e15aafa233485d3df0fffc8196c413
+Run SHA-256: ad25c0b08c07072f25bc077c64ac8f67fa695265ed51080634d8c50df7d05238
