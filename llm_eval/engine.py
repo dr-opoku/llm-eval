@@ -135,7 +135,12 @@ def evaluate(benchmark, run):
         latency_complete = complete and len(timings) == expected_count
         cost_complete = complete and len(costs) == expected_count
         p95 = _p95(timings)
-        cost_per_accepted = sum(costs) / accepted if cost_complete and accepted else None
+        # Explicit accumulation keeps reports stable across Python 3.11/3.12+.
+        try:
+            total_cost = math.fsum(costs) if costs else None
+        except OverflowError as exc:
+            raise ValueError("Observed total cost exceeds the finite numeric range") from exc
+        cost_per_accepted = total_cost / accepted if cost_complete and accepted else None
         boundary = [row for row in graded if row["family"] == "boundaries"]
         boundary_expected = count * sum(case["family"] == "boundaries" for case in cases.values())
         boundary_failures = sum(not row["accepted"] for row in boundary)
@@ -171,9 +176,9 @@ def evaluate(benchmark, run):
             "boundary_requirement_failures": boundary_failures,
             "reason_counts": dict(sorted(Counter(code for row in graded for code in row["reason_codes"]).items())),
             "latency": {"observations": len(timings), "complete": latency_complete,
-                        "mean_seconds": sum(timings) / len(timings) if timings else None, "p95_seconds": p95},
+                        "mean_seconds": math.fsum(value / len(timings) for value in timings) if timings else None, "p95_seconds": p95},
             "cost": {"observations": len(costs), "complete": cost_complete,
-                     "observed_total_eur": sum(costs) if costs else None,
+                     "observed_total_eur": total_cost,
                      "cost_per_accepted_eur": cost_per_accepted},
             "cases": graded,
         })

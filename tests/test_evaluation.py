@@ -2,6 +2,7 @@
 import copy
 import hashlib
 import json
+import math
 import unittest
 from llm_eval.contracts import fixture, fingerprint, number, parse_json, validate_benchmark
 from llm_eval.demo import demonstration
@@ -13,6 +14,21 @@ class EvaluationTests(unittest.TestCase):
     def setUp(self):
         self.benchmark = fixture("benchmark.json")
         self.run = demonstration(self.benchmark)
+
+    def test_fractional_aggregates_are_reproducible(self):
+        report = evaluate(self.benchmark, self.run)
+        for config, item in zip(self.run["configurations"], report["configurations"]):
+            costs = [record["cost_eur"] for record in config["records"]]
+            timings = [record["elapsed_seconds"] for record in config["records"]]
+            self.assertEqual(item["cost"]["observed_total_eur"], math.fsum(costs))
+            self.assertEqual(item["cost"]["cost_per_accepted_eur"], math.fsum(costs) / item["accepted_records"])
+            self.assertEqual(item["latency"]["mean_seconds"], math.fsum(value / len(timings) for value in timings))
+
+    def test_finite_individual_costs_with_overflowing_total_are_rejected(self):
+        for record in self.run["configurations"][0]["records"]:
+            record["cost_eur"] = 1e308
+        with self.assertRaisesRegex(ValueError, "total cost exceeds"):
+            evaluate(self.benchmark, self.run)
 
     def test_comparison_and_repeat_denominator(self):
         report = evaluate(self.benchmark, self.run)
