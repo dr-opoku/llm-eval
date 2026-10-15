@@ -127,8 +127,23 @@
     "limits": [
       "One source-packet plan review; reviewer did not execute tests. Helper implementations and some fixtures were outside the packet; findings were checked against the actual source.",
       "AGY was requested with selector gemini-3.8-flash-high; no independent attestation of the backend model.",
-      "The textual review ends inside its final limits section and is not valid complete JSON; its substantive findings and verdict were available. No missing ending was reconstructed."
+      "The original textual review ended inside its final limits section and was not valid complete JSON. Its substantive findings and verdict were available; the original missing wording was not reconstructed. See the separately dated continuation record."
     ]
   },
-  "verification": "docs/VERIFICATION.json"
+  "verification": "docs/VERIFICATION.json",
+  "review_continuation": {
+    "completed_at": "2026-10-15T08:07:34.966142+00:00",
+    "same_original_conversation": true,
+    "requested_model": "gemini-3.8-flash-high",
+    "backend_identity_attested": false,
+    "response_complete_valid_json": true,
+    "recovery_kind": "newly_formulated_continuation",
+    "reviewer_executed_tests": false,
+    "repository_unchanged_during_followup": true,
+    "scope": "Continuation of original source-packet review; not a new stress test or review of implemented changes.",
+    "additional_findings": [],
+    "reviewer_statement": "No substantive findings, blockers or plan changes were omitted by truncation.",
+    "adjudication": "Completed scope limits are consistent with the recorded review. No code or implementation-plan changes required; no verbatim recovery claimed.",
+    "details": "docs/REVIEW.md"
+  }
 }

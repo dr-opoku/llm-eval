@@ -48,4 +48,17 @@ See [verification results](VERIFICATION.json), [the action plan](ACTION_PLAN.jso
 
 Licensing, contribution rights, visibility and release remain owner decisions. They are prerequisites for broad reuse, not code defects to resolve by silently assigning a license.
 
-Review-record limit: the returned review text ended inside its final limits section and was not complete valid JSON. Its verdict and substantive findings were readable; the missing ending was not reconstructed.
+## Follow-up on the truncated ending — 15 October 2026
+
+The original response ended inside its final `limits_of_review` section and was not complete valid JSON. The original raw response has been preserved outside the repository.
+
+A follow-up resumed **the same AGY conversation** with the same requested model selector. Its complete, valid JSON response explicitly identified itself as a **newly formulated continuation**, not a verbatim recovery of the original missing wording. All showcase directories were mounted read-only; the repository remained unchanged during the follow-up. This was a continuation of the original source-packet review, not a second stress test or a review of the implemented changes.
+
+The reviewer supplied these final limits:
+
+- No commercial or open-source license was selected or evaluated; rights remain an owner decision.
+- The review used static analysis of the supplied plan, documentation and source packet. The reviewer ran no commands or tests and consulted no network resources.
+- `llm_eval/report.py` and `llm_eval/fixtures/benchmark.json` were outside the supplied packet; their internal implementations were not directly inspected by that reviewer.
+- Live Ollama behavior, model weights and host conditions were not observed. Runner findings were based on static analysis.
+
+The continuation returned no additional findings and stated that no substantive findings, blockers or plan changes had been omitted. That statement is the reviewer's account, not independent proof of the inaccessible original ending. The supplied limits are consistent with the review scope already recorded above. No code change or implementation-plan change follows from this continuation; licensing remains unresolved by design.
