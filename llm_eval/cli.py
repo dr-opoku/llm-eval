@@ -6,6 +6,7 @@ import os
 import sys
 import tempfile
 from pathlib import Path
+from importlib.resources import files
 
 from .contracts import fixture, read_json
 from .demo import demonstration
@@ -20,8 +21,20 @@ def _write(path, text):
 
 
 def _protect_output(path, inputs):
-    if path and any(Path(path).resolve() == Path(item).resolve() for item in inputs if item):
-        raise ValueError("Output must not overwrite an input file")
+    """Refuse lexical, symlink and existing hard-link input/output aliases.
+
+    This prevents accidental overwrites, not concurrent hostile filesystem races.
+    """
+    if not path:
+        return
+    target = Path(path)
+    for item in inputs:
+        if item is None:
+            continue
+        source = Path(item)
+        if (target.resolve() == source.resolve() or
+                (target.exists() and source.exists() and target.samefile(source))):
+            raise ValueError("Output must not overwrite an input file")
 
 
 def _checkpoint(path, run):
@@ -66,8 +79,11 @@ def main(argv=None):
     live.add_argument("--mode", choices=("auto", "standard", "fast", "thinking"), default="auto")
     args = parser.parse_args(argv)
     try:
-        inputs = [getattr(args, "benchmark", None), getattr(args, "run_file", None)]
+        inputs = [getattr(args, "benchmark", None), getattr(args, "run_file", None),
+                  Path(str(files("llm_eval").joinpath("fixtures", "benchmark.json")))]
         _protect_output(args.output, inputs)
+        if args.command == "demo":
+            _protect_output(args.save_run, inputs + [args.output])
         benchmark = read_json(args.benchmark) if getattr(args, "benchmark", None) else fixture("benchmark.json")
         if args.command == "run":
             from .runner import collect

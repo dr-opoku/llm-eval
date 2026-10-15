@@ -150,7 +150,10 @@ def evaluate(benchmark, run):
         if policy["maximum_p95_seconds"] is not None:
             checks["latency"] = ("pass" if p95 <= policy["maximum_p95_seconds"] else "fail") if latency_complete else "unknown"
         if policy["maximum_cost_per_accepted_eur"] is not None:
-            checks["cost"] = ("pass" if cost_per_accepted <= policy["maximum_cost_per_accepted_eur"] else "fail") if cost_per_accepted is not None else "unknown"
+            # Complete accounting and zero accepted results cannot satisfy a cost-per-result ceiling.
+            # The ratio itself remains undefined (null), never Infinity or an invented zero.
+            checks["cost"] = ("fail" if not accepted else
+                              ("pass" if cost_per_accepted <= policy["maximum_cost_per_accepted_eur"] else "fail")) if cost_complete else "unknown"
         # Missing evidence takes precedence over a partial-sample aggregate verdict.
         outcome = "insufficient_evidence" if "unknown" in checks.values() else (
             "does_not_meet_sample_rules" if "fail" in checks.values() else "meets_sample_rules"

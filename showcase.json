@@ -9,6 +9,23 @@
   "demo_provenance": "synthetic",
   "production_suitability": "not_established",
   "license_status": "not_selected",
-  "related_repositories": ["https://github.com/dr-opoku/dataqmonitor", "https://github.com/dr-opoku/resqmonitor"],
-  "note": "Project metadata, not a commerce or interoperability standard."
+  "related_repositories": [
+    "https://github.com/dr-opoku/dataqmonitor",
+    "https://github.com/dr-opoku/resqmonitor"
+  ],
+  "note": "Project metadata, not a commerce or interoperability standard.",
+  "case_study": "docs/CASE_STUDY.md",
+  "action_plan": "docs/ACTION_PLAN.json",
+  "review": "docs/REVIEW.md",
+  "project_status": "docs/PROJECT_STATUS.md",
+  "verification": "docs/VERIFICATION.json",
+  "report_consumer": {
+    "command": "python3 scripts/inspect_report.py REPORT.json",
+    "exit_codes": {
+      "0": "declared sample rules met; no authority granted",
+      "1": "negative or insufficient evidence",
+      "2": "invalid or error report"
+    },
+    "authenticity_verified": false
+  }
 }

@@ -28,7 +28,7 @@ An attempt cell is `(configuration_id, case_id, attempt)`. The expected matrix h
 - Matrix acceptance: accepted / expected cells. Missing cells do not count as accepted.
 - A complete matrix and the minimum distinct-case count are mandatory.
 
-The bundled minimum is nine distinct cases. It is an example coverage rule, not a minimum scientifically adequate sample size. The default three attempts use the same seed; they do not establish independent observations. No confidence interval, significance test or population estimate is produced.
+A required minimum greater than the benchmark case count is rejected as an impossible configuration. The bundled minimum is nine distinct cases. It is an example coverage rule, not a minimum scientifically adequate sample size. The default three attempts use the same seed; they do not establish independent observations. No confidence interval, significance test or population estimate is produced.
 
 ## 4. Apply mandatory requirements separately
 
@@ -44,7 +44,7 @@ Mean and p95 use all supplied finite nonnegative full-request durations, includi
 
 The local runner uses `keep_alive=0`. Request time includes loading, generation, transfer and client overhead; it is not pure decoding speed. Available Ollama load and evaluation durations remain in run records. Probe and inventory requests are excluded. Shared host activity is not controlled or continuously instrumented, so performance comparisons require operator review.
 
-Cost per accepted result is **the sum of supplied costs for ALL declared attempt cells divided by accepted attempts**. It is unknown if any cell/cost is missing or no result is accepted. Failure costs are included. This metric excludes setup, probes, development labor and any expenses not supplied; it is not total cost of ownership. Cost is EUR only; no currency conversion is performed. Actual cost provenance belongs in the run metadata. A task retry consumes a separate attempt cell; no failed cell may be replaced by a successful retry.
+Cost per accepted result is **the sum of supplied costs for ALL declared attempt cells divided by accepted attempts**. It is unknown if any cell/cost is missing or no result is accepted. If cost is required, the matrix is complete and every cost is supplied but zero answers are accepted, the cost check fails while the undefined ratio stays null. Partial costs remain unknown. The bundled cost ceiling is null, so cost is displayed but not required by default. Failure costs are included. This metric excludes setup, probes, development labor and any expenses not supplied; it is not total cost of ownership. Cost is EUR only; no currency conversion is performed. Actual cost provenance belongs in the run metadata. A task retry consumes a separate attempt cell; no failed cell may be replaced by a successful retry.
 
 ## 6. Keep eligibility separate from procurement
 

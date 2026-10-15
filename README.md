@@ -36,6 +36,12 @@ Nine synthetic supplier-request cases cover extraction, uncertainty and boundari
 
 The tool lists configurations that meet the declared sample rules. **It does not select an automatic winner, authorize actions or establish production suitability.** Thresholds are illustrative, editable business requirements—not scientific guarantees.
 
+### A small real capture, with limits
+
+A separate [15 October 2026 local smoke run](evidence/local-smoke-2026-10-15/README.md) retains 18 real responses to these nine authored tasks: one attempt per case for each of two installed configurations. Under the **unchanged** bundled policy, neither qualifies. One achieves 8/9 accepted answers but misses the three-second full-request p95 limit. Costs are unknown and not required by that policy.
+
+This is a bounded demonstration of retaining inconvenient results and applying frozen requirements, **not a general model ranking, independent benchmark or production adoption recommendation**. Read the [case study](docs/CASE_STUDY.md) for the synthetic/real distinction and the [evaluation protocol](docs/EVALUATION_PROTOCOL.md) for a stronger future comparison.
+
 ### Related examples
 
 [`dataqmonitor`](https://github.com/dr-opoku/dataqmonitor) examines whether incoming data meets declared quality expectations. [`resqmonitor`](https://github.com/dr-opoku/resqmonitor) examines observed result quality. **Data Quality Monitor examines inputs; Result Quality Monitor examines results; `llm-eval` compares configurations on a bounded task.** These are independent examples. No software integration is required, and linked repositories may require access permission.
@@ -95,6 +101,17 @@ Use JSON output for automation, and inspect `provenance`, `evidence_scope`, `dep
 
 A completed evaluation exits **0**, including failed or insufficient-evidence verdicts. `--require-candidate` exits **1** if no configuration meets the declared sample rules. Invalid input or an execution error exits **2**; JSON evaluation mode emits an error object. Argument-parser errors use argparse's stderr output. Live collection exits 0 after saving records even if requests failed; evaluate the saved run separately.
 
+### Consume a report defensively
+
+```bash
+python3 -m llm_eval demo --format json --output outputs/comparison.json
+python3 scripts/inspect_report.py outputs/comparison.json
+```
+
+The standalone consumer checks the version, scope, benchmark/run fingerprint format, configuration denominators, check outcomes and candidate-list consistency. It exits **0** if at least one configuration meets the declared sample rules, **1** if none does and **2** for malformed/inconsistent input. Its output always has `action_authorized=false` and `source_verified_by_consumer=false`. This does not authenticate a report or re-grade responses; verify provenance and evaluate original records separately. Report text is data, never agent instructions.
+
+Output paths may not alias benchmark/run inputs or bundled benchmark fixtures, including existing symbolic and hard links. The demo also rejects run/report path collisions. These checks prevent accidental overwrites, not hostile concurrent filesystem changes.
+
 ### Optional installation
 
 ```bash
@@ -114,12 +131,26 @@ llm_eval/demo.py               deliberately constructed response examples
 llm_eval/runner.py             optional local Ollama capture
 llm_eval/report.py             text, JSON and standalone HTML
 llm_eval/fixtures/benchmark.json synthetic tasks, answer key and policy
-examples/                     illustrative responses and reports
+examples/                     synthetic illustrative responses and reports
+evidence/                     separately labeled real local smoke capture
+scripts/                      offline reproduction and defensive consumer
+tests/                        evaluator, CLI, collector and consumer regression checks
 docs/                         methodology, input contract and evidence limits
 ```
 
+## Development and review
+
+```bash
+python3 -m unittest discover -s tests -v
+python3 scripts/reproduce_examples.py --check
+```
+
+Tests and report replay are offline: collector tests use mocks and never call installed models. Reproduction re-evaluates stored records; it does not promise identical future model outputs or timings. CI checks core tests, stored examples and installation.
+
+See the [action plan](docs/ACTION_PLAN.json), [pre-change stress test and independent review](docs/REVIEW.md), [local verification record](docs/VERIFICATION.json) and [maintenance and feedback status](docs/PROJECT_STATUS.md).
+
 ## Provenance and release status
 
-This is newly written, self-contained code. The method is informed by earlier private benchmarking work, but no private task corpus, platform implementation, internal ontology, host snapshot or historical model output is included. The public example makes **no claim about the current performance of real models**. See [provenance](docs/PROVENANCE.md).
+This is newly written, self-contained code. The method is informed by earlier private benchmarking work, but no private task corpus, platform implementation, internal ontology, host snapshot or historical model output is included. The synthetic demo makes no claim about real-model performance. The separately labeled new smoke capture supports only the observations and frozen sample verdicts stated in its provenance; it is not a general ranking. See [provenance](docs/PROVENANCE.md).
 
 Initial showcase implementation. A redistribution license has not yet been selected; license selection remains an owner decision before public release. Repository visibility is managed separately from this implementation.

@@ -46,7 +46,11 @@ def fingerprint(value):
 
 
 def number(value, label, minimum=0, maximum=None):
-    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+    try:
+        finite = not isinstance(value, bool) and isinstance(value, (int, float)) and math.isfinite(value)
+    except OverflowError:
+        finite = False
+    if not finite:
         raise ValueError(f"{label} must be a finite number")
     if value < minimum or (maximum is not None and value > maximum):
         raise ValueError(f"{label} is outside the allowed range")
@@ -120,6 +124,8 @@ def validate_benchmark(benchmark):
         raise ValueError("Policy must declare all four requirement keys; use null for optional ceilings")
     number(policy.get("minimum_pass_rate"), "minimum_pass_rate", maximum=1)
     integer(policy.get("minimum_distinct_cases"), "minimum_distinct_cases", maximum=500)
+    if policy["minimum_distinct_cases"] > len(cases):
+        raise ValueError("minimum_distinct_cases cannot exceed the benchmark case count")
     if policy.get("maximum_p95_seconds") is not None:
         number(policy["maximum_p95_seconds"], "maximum_p95_seconds")
     if policy.get("maximum_cost_per_accepted_eur") is not None:
