@@ -38,6 +38,10 @@ These references informed the entry point, examples and verification. They do no
 
 The reference can support a conversation about specifying a decision, defining evidence, coordinating correction/acceptance and making limits inspectable by technical and business stakeholders. It does not establish enterprise rollout experience, organizational adoption, savings or proprietary platform capability. Those claims need separate project evidence. No private platform implementation is required or included.
 
+## Python-version regression found by GitHub CI
+
+The first Python 3.11 CI replay exposed different floating-point aggregates from Python 3.12. A focused regression test reproduced the failure before the repair. Explicit `math.fsum` accumulation now reproduces the stored examples on both locally available versions. Original responses, frozen requirements and sample eligibility outcomes were preserved. Overflowing aggregate costs yield a structured input error rather than Infinity.
+
 ## Verification and remaining decisions
 
 See [verification results](VERIFICATION.json), [the action plan](ACTION_PLAN.json) and [project status](PROJECT_STATUS.md). Automated tests and saved-report replay check the implementation and its declared examples. They cannot establish label truth, representative sampling, model authenticity or deployment suitability.

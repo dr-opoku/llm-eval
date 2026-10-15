@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
   "repository": "llm-eval",
-  "checked_at": "2026-10-15T06:52:05.344668+00:00",
+  "checked_at": "2026-10-15T06:56:34.607114+00:00",
   "python": "3.12.3",
   "tests": {
-    "discovered": 34,
-    "passed": 34,
+    "discovered": 36,
+    "passed": 36,
     "failed": 0,
     "skipped": 0,
     "command": "python3 -m unittest discover -s tests -v"
@@ -35,9 +35,23 @@
       "3.11",
       "3.13"
     ],
-    "github_execution": "not_yet_observed",
+    "github_execution": "success",
     "model_or_credentials_needed": false,
-    "token_contents": "read"
+    "token_contents": "read",
+    "initial_failure": "Python 3.11 float sum produced different displayed aggregates; replaced with explicit stable accumulation and reproduced the regression before repair.",
+    "observed_source_commit": "192afec18ffad67df8d679d18c55369155792049",
+    "run_url": "https://github.com/dr-opoku/llm-eval/actions/runs/38695580876",
+    "jobs": [
+      {
+        "name": "core (3.13)",
+        "conclusion": "success"
+      },
+      {
+        "name": "core (3.11)",
+        "conclusion": "success"
+      }
+    ],
+    "record_scope": "Observed run at the stated source commit; later documentation-only commits trigger separate runs."
   },
   "pre_edit_stress_review": {
     "passed": true,
@@ -62,10 +76,17 @@
     "wheel_demo_scenarios": 2,
     "wheel_saved_report_comparison": "matched",
     "real_capture_wheel_replay": true,
-    "sdist_tests_discovered": 34,
-    "sdist_tests_passed": 34,
+    "sdist_tests_discovered": 36,
+    "sdist_tests_passed": 36,
     "sdist_tests_skipped": 0,
     "sdist_skips_reason": null,
     "sdist_saved_report_reproduction": "passed"
+  },
+  "additional_python311_core": {
+    "python": "3.11.17",
+    "tests": 36,
+    "passed": 36,
+    "skipped_optional_mcp": 0,
+    "saved_reports_reproduce": true
   }
 }
