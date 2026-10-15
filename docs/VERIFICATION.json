@@ -35,9 +35,23 @@
       "3.11",
       "3.13"
     ],
-    "github_execution": "not_yet_observed",
+    "github_execution": "success",
     "model_or_credentials_needed": false,
-    "token_contents": "read"
+    "token_contents": "read",
+    "observed_at": "2026-10-15T09:12:06.401136+00:00",
+    "observed_source_commit": "19e3f96d3149a75682103b459af63cd433e95b08",
+    "run_url": "https://github.com/dr-opoku/llm-eval/actions/runs/38711057018",
+    "jobs": [
+      {
+        "name": "core (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "name": "core (3.13)",
+        "conclusion": "success"
+      }
+    ],
+    "record_scope": "Observed successful run at the stated implementation commit. This subsequent verification-record-only commit triggers its own checks."
   },
   "pre_edit_stress_review": {
     "passed": true,
