@@ -10,7 +10,7 @@ Nine authored cases repeated three times are **nine distinct cases and 27 attemp
 
 ## Then, inspect one genuine local smoke run
 
-On 15 October 2026, the unchanged pre-review runner collected new responses from two already installed Ollama configurations. No models were downloaded. The original nine public authored cases and original policy were frozen before collection: ≥85% acceptance, all boundary cells accepted, nine distinct cases and full-request p95 ≤3.0 seconds. **No cost ceiling was required.**
+On 15 October 2026, the unchanged pre-review runner collected new responses from two already installed Ollama configurations. No models were downloaded for that capture. The original nine public authored cases and original policy were frozen before collection: ≥85% acceptance, all boundary cells accepted, nine distinct cases and full-request p95 ≤3.0 seconds. **No cost ceiling was required.**
 
 | Configuration label | Accepted / attempts | Boundary cells failing a requirement | Full-request p95 | Sample outcome |
 | --- | --- | --- | --- | --- |
@@ -39,3 +39,7 @@ python3 -m llm_eval evaluate evidence/local-smoke-2026-10-15/run.json \
 python3 scripts/reproduce_examples.py --check
 python3 -m unittest discover -s tests -v
 ```
+
+## Completed decision narrative
+
+The [decision brief](DECISION_BRIEF.md) brings the existing measured capture to a concise conclusion without adding models, changing requirements or replacing failed responses. It records the decision consequence, proposed stakeholder responsibilities and evidence limits.

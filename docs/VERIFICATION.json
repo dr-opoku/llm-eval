@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "repository": "llm-eval",
-  "checked_at": "2026-10-15T06:56:34.607114+00:00",
+  "checked_at": "2026-10-15T09:10:37.823676+00:00",
   "python": "3.12.3",
   "tests": {
     "discovered": 36,
@@ -28,38 +28,26 @@
   },
   "markdown_local_targets": {
     "passed": true,
-    "targets_checked": 48
+    "targets_checked": 61
   },
   "ci": {
     "configured_python_versions": [
       "3.11",
       "3.13"
     ],
-    "github_execution": "success",
+    "github_execution": "not_yet_observed",
     "model_or_credentials_needed": false,
-    "token_contents": "read",
-    "initial_failure": "Python 3.11 float sum produced different displayed aggregates; replaced with explicit stable accumulation and reproduced the regression before repair.",
-    "observed_source_commit": "192afec18ffad67df8d679d18c55369155792049",
-    "run_url": "https://github.com/dr-opoku/llm-eval/actions/runs/38695580876",
-    "jobs": [
-      {
-        "name": "core (3.13)",
-        "conclusion": "success"
-      },
-      {
-        "name": "core (3.11)",
-        "conclusion": "success"
-      }
-    ],
-    "record_scope": "Observed run at the stated source commit; later documentation-only commits trigger separate runs."
+    "token_contents": "read"
   },
   "pre_edit_stress_review": {
     "passed": true,
     "independent_reviews": 1,
     "requested_agy_model": "gemini-3.8-flash-high",
+    "requested_claude_code_model": null,
     "backend_identity_attested": false,
     "reviewer_executed_tests": false,
-    "details": "REVIEW.md"
+    "details": "REVIEW.md",
+    "current_round_scope": "Local pre-edit closure stress: baseline tests, exact capture replay and unchanged hashes. Historical AGY source-packet review and its completed continuation remain separately recorded; no new external review of this decision brief."
   },
   "scope_limits": [
     "Tests establish declared implementation behavior, not reference-label truth or representative performance.",
@@ -82,6 +70,33 @@
     "sdist_skips_reason": null,
     "sdist_saved_report_reproduction": "passed"
   },
+  "preceding_verification": {
+    "checked_at": "2026-10-15T06:56:34.607114+00:00",
+    "ci": {
+      "configured_python_versions": [
+        "3.11",
+        "3.13"
+      ],
+      "github_execution": "success",
+      "model_or_credentials_needed": false,
+      "token_contents": "read",
+      "initial_failure": "Python 3.11 float sum produced different displayed aggregates; replaced with explicit stable accumulation and reproduced the regression before repair.",
+      "observed_source_commit": "192afec18ffad67df8d679d18c55369155792049",
+      "run_url": "https://github.com/dr-opoku/llm-eval/actions/runs/38695580876",
+      "jobs": [
+        {
+          "name": "core (3.13)",
+          "conclusion": "success"
+        },
+        {
+          "name": "core (3.11)",
+          "conclusion": "success"
+        }
+      ],
+      "record_scope": "Observed run at the stated source commit; later documentation-only commits trigger separate runs."
+    },
+    "scope": "Historical verification; CI refers only to its explicitly recorded source commit."
+  },
   "additional_python311_core": {
     "python": "3.11.17",
     "tests": 36,
@@ -89,14 +104,11 @@
     "skipped_optional_mcp": 0,
     "saved_reports_reproduce": true
   },
-  "review_continuation": {
-    "completed_at": "2026-10-15T08:07:34.966142+00:00",
-    "same_original_conversation": true,
-    "response_complete_valid_json": true,
-    "recovery_kind": "newly_formulated_continuation",
-    "additional_findings": 0,
-    "repository_unchanged_during_followup": true,
-    "scope": "Continuation of the original review, not an additional pre-edit review or implementation test.",
-    "details": "REVIEW.md"
+  "reference_case_freeze": {
+    "protected_files": 25,
+    "evidence_source_fixtures_tests_scripts_unchanged": true,
+    "new_reference_attempts": 0,
+    "new_reference_models": 0,
+    "decision_brief": "DECISION_BRIEF.md"
   }
 }

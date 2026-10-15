@@ -42,6 +42,8 @@ A separate [15 October 2026 local smoke run](evidence/local-smoke-2026-10-15/REA
 
 This is a bounded demonstration of retaining inconvenient results and applying frozen requirements, **not a general model ranking, independent benchmark or production adoption recommendation**. Read the [case study](docs/CASE_STUDY.md) for the synthetic/real distinction and the [evaluation protocol](docs/EVALUATION_PROTOCOL.md) for a stronger future comparison.
 
+**Completed reference case:** The [decision brief](docs/DECISION_BRIEF.md) connects the business question, unchanged evidence, negative result and responsible next step in one page. It uses the existing capture; no additional model or benchmark run is required to inspect it.
+
 ### Related examples
 
 [`dataqmonitor`](https://github.com/dr-opoku/dataqmonitor) examines whether incoming data meets declared quality expectations. [`resqmonitor`](https://github.com/dr-opoku/resqmonitor) examines observed result quality. **Data Quality Monitor examines inputs; Result Quality Monitor examines results; `llm-eval` compares configurations on a bounded task.** These are independent examples. No software integration is required, and linked repositories may require access permission.

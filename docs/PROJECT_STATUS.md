@@ -2,6 +2,10 @@
 
 This is a small reference implementation. Maintenance is best effort; there is no service-level agreement, production certification or guaranteed response time. Checked behavior and remaining limits are recorded in [the review](REVIEW.md).
 
+## Reference case complete within its declared scope
+
+The [decision brief](DECISION_BRIEF.md) closes the case using the existing nine authored tasks and 18 measured responses. Neither configuration meets all frozen sample rules. No extra models or measurements are needed to present that conclusion. Completion of this bounded reference does not establish production suitability or resolve usage rights.
+
 ## Usage rights remain an owner decision
 
 No redistribution or usage license has been selected. Source availability and the runnable examples do not themselves grant permission for commercial use, research use, redistribution or incorporation into another product. Contact the repository owner before relying on a permission that has not been granted. This status note does not grant a new license or change existing rights.

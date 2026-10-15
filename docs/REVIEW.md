@@ -62,3 +62,9 @@ The reviewer supplied these final limits:
 - Live Ollama behavior, model weights and host conditions were not observed. Runner findings were based on static analysis.
 
 The continuation returned no additional findings and stated that no substantive findings, blockers or plan changes had been omitted. That statement is the reviewer's account, not independent proof of the inaccessible original ending. The supplied limits are consistent with the review scope already recorded above. No code change or implementation-plan change follows from this continuation; licensing remains unresolved by design.
+
+## Reference-case closure stress check — 15 October 2026
+
+Before this documentation-only finalization, baseline tests passed, tracked hashes matched the baseline commit and offline re-evaluation exactly matched the stored measured report. Checks confirmed 2/9 and 8/9 accepted attempts, 3 and 0 failing boundary cells, unchanged 3.0-second p95 policy, no candidate and unmeasured costs. The earlier AGY review and completed continuation above are not presented as a new review of this brief.
+
+The [decision brief](DECISION_BRIEF.md) adds only presentation and a bounded conclusion. Raw capture, benchmark, implementation and all failures remain byte-identical. Separate staged models and the operational single-prompt check are excluded. Completion means a closed illustrative decision narrative, not model-market coverage, enterprise validation or a license grant.

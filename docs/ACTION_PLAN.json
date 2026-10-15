@@ -79,6 +79,12 @@
       "action": "Repair the Python 3.11/3.12 floating-point aggregate discrepancy exposed by the first GitHub example replay; use explicit stable accumulation.",
       "acceptance": "A focused regression fails before the repair. Stored examples reproduce under both locally available versions; original responses, frozen policy and sample verdicts remain unchanged.",
       "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "reference_case_closure",
+      "action": "Present the existing measured capture as a completed decision case, with question, requirements, all failures, limits, proposed accountability and offline replay. Link it for humans and agents.",
+      "acceptance": "Existing 18 measured attempts and all evidence bytes unchanged. No automatic winner; no cost or human-effort inference; no new model in the reference case.",
+      "status": "implemented_and_locally_verified"
     }
   ],
   "pre_edit_gate": "Record baseline tests and one independent Gemini 3.8 Flash review of this plan and supplied source before repository edits. Revise actions against concrete findings.",
@@ -145,5 +151,13 @@
     "reviewer_statement": "No substantive findings, blockers or plan changes were omitted by truncation.",
     "adjudication": "Completed scope limits are consistent with the recorded review. No code or implementation-plan changes required; no verbatim recovery claimed.",
     "details": "docs/REVIEW.md"
+  },
+  "reference_case_finalization": {
+    "date": "2026-10-15T09:06:04.055004+00:00",
+    "pre_edit_stress": "Baseline tests, byte-identical stored-capture replay and unchanged tracked hashes verified before edits. Prior AGY review and recovered continuation remain documented separately.",
+    "scope": "Documentation only: decision brief and navigation. Freeze all evidence files, source code, fixtures, benchmark and sample verdicts. No new models or measurements in the reference.",
+    "state": "implemented_and_locally_verified",
+    "verification": "docs/VERIFICATION.json",
+    "rights": "Owner decision pending; no license grant."
   }
 }

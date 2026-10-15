@@ -27,5 +27,7 @@
       "2": "invalid or error report"
     },
     "authenticity_verified": false
-  }
+  },
+  "decision_brief": "docs/DECISION_BRIEF.md",
+  "reference_case_status": "complete_within_declared_scope"
 }
