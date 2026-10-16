@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "llm-eval structured response 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision",
+    "fields",
+    "evidence_ids",
+    "reason"
+  ],
+  "properties": {
+    "decision": {
+      "enum": [
+        "accept",
+        "review",
+        "reject"
+      ]
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "supplier",
+        "units",
+        "unit_price_eur"
+      ],
+      "properties": {
+        "supplier": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "units": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "unit_price_eur": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1000000
+        }
+      }
+    },
+    "evidence_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

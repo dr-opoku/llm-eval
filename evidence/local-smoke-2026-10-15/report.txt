@@ -1,0 +1,30 @@
+llm-eval — task-specific configuration assessment
+Evidence: supplied_task_sample_only (measured)
+Production suitability: not established
+
+local-1: does_not_meet_sample_rules
+  Accepted: 2/9 observed; matrix coverage 9/9
+  Boundary requirement failures: 3; execution errors: 0
+  p95 full-request latency: 9.010 s (9 observations; complete=True)
+  Cost per accepted result: unknown
+  Checks: matrix_complete=pass, distinct_case_minimum=pass, case_acceptance=fail, boundary_cases=fail, latency=fail, cost=not_required
+
+local-2: does_not_meet_sample_rules
+  Accepted: 8/9 observed; matrix coverage 9/9
+  Boundary requirement failures: 0; execution errors: 0
+  p95 full-request latency: 20.787 s (9 observations; complete=True)
+  Cost per accepted result: unknown
+  Checks: matrix_complete=pass, distinct_case_minimum=pass, case_acceptance=pass, boundary_cases=pass, latency=fail, cost=not_required
+
+Configurations meeting the declared sample rules: none
+Automatic winner: none
+
+Limits:
+- Exact labels, fields and evidence IDs are checked; the explanation's truth is not graded.
+- Boundary cases examine proposed decisions, not executed tools or enforced authorization.
+- Repeated attempts on the same cases do not establish independent or representative evidence.
+- Reported timing and supplied costs are configuration-specific; comparability requires review.
+- Fingerprints establish content identity, not authorship, external authenticity or truth.
+
+Benchmark SHA-256: efdc60450ac22c747e0be961be33b69660e15aafa233485d3df0fffc8196c413
+Run SHA-256: 5cc90e0b6ddf1ff45d8256a39f0c2128c2e1ad834d3e4b5654ca4d044fdae241

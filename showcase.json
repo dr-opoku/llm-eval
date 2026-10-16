@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "name": "llm-eval",
+  "purpose": "Compare configurations against a bounded task and declared evidence requirements.",
+  "demo_command": "python3 -m llm_eval demo",
+  "minimum_python": "3.11",
+  "runtime_dependencies": [],
+  "demo_network_required": false,
+  "demo_provenance": "synthetic",
+  "production_suitability": "not_established",
+  "license_status": "not_selected",
+  "related_repositories": [
+    "https://github.com/dr-opoku/dataqmonitor",
+    "https://github.com/dr-opoku/resqmonitor"
+  ],
+  "note": "Project metadata, not a commerce or interoperability standard.",
+  "case_study": "docs/CASE_STUDY.md",
+  "action_plan": "docs/ACTION_PLAN.json",
+  "review": "docs/REVIEW.md",
+  "project_status": "docs/PROJECT_STATUS.md",
+  "verification": "docs/VERIFICATION.json",
+  "report_consumer": {
+    "command": "python3 scripts/inspect_report.py REPORT.json",
+    "exit_codes": {
+      "0": "declared sample rules met; no authority granted",
+      "1": "negative or insufficient evidence",
+      "2": "invalid or error report"
+    },
+    "authenticity_verified": false
+  },
+  "decision_brief": "docs/DECISION_BRIEF.md",
+  "reference_case_status": "complete_within_declared_scope"
+}

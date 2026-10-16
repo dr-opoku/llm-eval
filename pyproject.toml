@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-eval-showcase"
+version = "0.1.0"
+description = "A small, evidence-aware example of selecting an LLM configuration for a bounded business task."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "Dr. Daniel Opoku"}]
+dependencies = []
+
+[project.scripts]
+llm-eval = "llm_eval.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["llm_eval*"]
+
+[tool.setuptools.package-data]
+llm_eval = ["fixtures/*.json"]

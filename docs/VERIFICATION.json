@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "repository": "llm-eval",
+  "checked_at": "2026-10-15T09:10:37.823676+00:00",
+  "python": "3.12.3",
+  "tests": {
+    "discovered": 36,
+    "passed": 36,
+    "failed": 0,
+    "skipped": 0,
+    "command": "python3 -m unittest discover -s tests -v"
+  },
+  "optional_mcp": {
+    "tested": false,
+    "sdk_version": null,
+    "checks": 0,
+    "real_local_stdio_exchange": false
+  },
+  "saved_reports": {
+    "deterministic_reproduction": "passed",
+    "command": "python3 scripts/reproduce_examples.py --check",
+    "live_model_calls": false
+  },
+  "json_schema_validation": {
+    "passed": true,
+    "artifacts": 6,
+    "validator_version": "4.26.0"
+  },
+  "markdown_local_targets": {
+    "passed": true,
+    "targets_checked": 61
+  },
+  "ci": {
+    "configured_python_versions": [
+      "3.11",
+      "3.13"
+    ],
+    "github_execution": "success",
+    "model_or_credentials_needed": false,
+    "token_contents": "read",
+    "observed_at": "2026-10-15T09:12:06.401136+00:00",
+    "observed_source_commit": "19e3f96d3149a75682103b459af63cd433e95b08",
+    "run_url": "https://github.com/dr-opoku/llm-eval/actions/runs/38711057018",
+    "jobs": [
+      {
+        "name": "core (3.11)",
+        "conclusion": "success"
+      },
+      {
+        "name": "core (3.13)",
+        "conclusion": "success"
+      }
+    ],
+    "record_scope": "Observed successful run at the stated implementation commit. This subsequent verification-record-only commit triggers its own checks."
+  },
+  "pre_edit_stress_review": {
+    "passed": true,
+    "independent_reviews": 1,
+    "requested_agy_model": "gemini-3.8-flash-high",
+    "requested_claude_code_model": null,
+    "backend_identity_attested": false,
+    "reviewer_executed_tests": false,
+    "details": "REVIEW.md",
+    "current_round_scope": "Local pre-edit closure stress: baseline tests, exact capture replay and unchanged hashes. Historical AGY source-packet review and its completed continuation remain separately recorded; no new external review of this decision brief."
+  },
+  "scope_limits": [
+    "Tests establish declared implementation behavior, not reference-label truth or representative performance.",
+    "The JSON consumer checks internal structure, not authenticity or original-data correctness.",
+    "Licensing, contribution rights and public release remain owner decisions."
+  ],
+  "packaging": {
+    "state": "passed",
+    "wheel_build": "passed",
+    "sdist_build": "passed",
+    "wheel_source_bytes": "matched",
+    "fresh_wheel_install": "passed_without_dependencies",
+    "wheel_command_directory": "outside_checkout",
+    "wheel_demo_scenarios": 2,
+    "wheel_saved_report_comparison": "matched",
+    "real_capture_wheel_replay": true,
+    "sdist_tests_discovered": 36,
+    "sdist_tests_passed": 36,
+    "sdist_tests_skipped": 0,
+    "sdist_skips_reason": null,
+    "sdist_saved_report_reproduction": "passed"
+  },
+  "preceding_verification": {
+    "checked_at": "2026-10-15T06:56:34.607114+00:00",
+    "ci": {
+      "configured_python_versions": [
+        "3.11",
+        "3.13"
+      ],
+      "github_execution": "success",
+      "model_or_credentials_needed": false,
+      "token_contents": "read",
+      "initial_failure": "Python 3.11 float sum produced different displayed aggregates; replaced with explicit stable accumulation and reproduced the regression before repair.",
+      "observed_source_commit": "192afec18ffad67df8d679d18c55369155792049",
+      "run_url": "https://github.com/dr-opoku/llm-eval/actions/runs/38695580876",
+      "jobs": [
+        {
+          "name": "core (3.13)",
+          "conclusion": "success"
+        },
+        {
+          "name": "core (3.11)",
+          "conclusion": "success"
+        }
+      ],
+      "record_scope": "Observed run at the stated source commit; later documentation-only commits trigger separate runs."
+    },
+    "scope": "Historical verification; CI refers only to its explicitly recorded source commit."
+  },
+  "additional_python311_core": {
+    "python": "3.11.17",
+    "tests": 36,
+    "passed": 36,
+    "skipped_optional_mcp": 0,
+    "saved_reports_reproduce": true
+  },
+  "reference_case_freeze": {
+    "protected_files": 25,
+    "evidence_source_fixtures_tests_scripts_unchanged": true,
+    "new_reference_attempts": 0,
+    "new_reference_models": 0,
+    "decision_brief": "DECISION_BRIEF.md"
+  }
+}

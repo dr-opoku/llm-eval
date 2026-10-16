@@ -1,0 +1,486 @@
+{
+  "schema_version": "1.0",
+  "benchmark_id": "synthetic-supplier-triage-v1",
+  "benchmark_sha256": "efdc60450ac22c747e0be961be33b69660e15aafa233485d3df0fffc8196c413",
+  "run_sha256": "5cc90e0b6ddf1ff45d8256a39f0c2128c2e1ad834d3e4b5654ca4d044fdae241",
+  "provenance": {
+    "kind": "measured",
+    "started_at": "2026-10-15T06:29:19.760286+00:00",
+    "finished_at": "2026-10-15T06:33:48.610025+00:00",
+    "adapter": "ollama_generate_http",
+    "scheduler": "serial",
+    "requested_models": [
+      "qwen2.5:3b-instruct-q4_K_M",
+      "qwen3:8b"
+    ],
+    "timing_scope": "full client request, including model loading; keep_alive=0",
+    "probe_cost_scope": "mode probes and inventory requests are excluded from task metrics",
+    "description": "New requests on supplied cases. No model is installed or promoted. Costs are unmeasured; they are not inferred from tokens.",
+    "publication_note": "Task requests, complete responses, failures, probes and timing records retained. model_show metadata reduced to details/capabilities; model files, templates, license text, tensor inventory and system settings omitted. This is an inspected export, not an untouched server inventory.",
+    "human_effort": "not_measured",
+    "task_provenance": "Nine public authored synthetic cases; no held-out or representative task sample."
+  },
+  "policy": {
+    "minimum_pass_rate": 0.85,
+    "minimum_distinct_cases": 9,
+    "maximum_p95_seconds": 3.0,
+    "maximum_cost_per_accepted_eur": null
+  },
+  "evidence_scope": "supplied_task_sample_only",
+  "deployment_readiness": "not_established",
+  "selection": {
+    "candidate_ids": [],
+    "automatic_winner": null,
+    "reason": "Sample-rule eligibility is not a production recommendation or a causal model ranking."
+  },
+  "configurations": [
+    {
+      "configuration_id": "local-1",
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "parameters": {
+        "selected_mode": "fast",
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 4096,
+        "num_predict": 384,
+        "keep_alive": 0
+      },
+      "environment": {
+        "adapter": "ollama_generate_http",
+        "ollama_version": {
+          "version": "0.30.7"
+        },
+        "version_error": null,
+        "platform": "Linux",
+        "machine": "x86_64",
+        "model_show": {
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "3.1B",
+            "quantization_level": "Q4_K_M"
+          },
+          "capabilities": [
+            "completion",
+            "tools"
+          ]
+        },
+        "show_error": null
+      },
+      "outcome": "does_not_meet_sample_rules",
+      "checks": {
+        "matrix_complete": "pass",
+        "distinct_case_minimum": "pass",
+        "case_acceptance": "fail",
+        "boundary_cases": "fail",
+        "latency": "fail",
+        "cost": "not_required"
+      },
+      "observed_records": 9,
+      "expected_records": 9,
+      "missing_records": 0,
+      "distinct_cases": 9,
+      "accepted_records": 2,
+      "execution_errors": 0,
+      "observed_acceptance_rate": 0.2222222222222222,
+      "matrix_acceptance_rate": 0.2222222222222222,
+      "strict_json_records": 8,
+      "boundary_requirement_failures": 3,
+      "reason_counts": {
+        "decision_match_failed": 2,
+        "evidence_match_failed": 1,
+        "invalid_json": 1,
+        "invalid_schema": 3
+      },
+      "latency": {
+        "observations": 9,
+        "complete": true,
+        "mean_seconds": 7.426083146448946,
+        "p95_seconds": 9.010348587995395
+      },
+      "cost": {
+        "observations": 0,
+        "complete": false,
+        "observed_total_eur": null,
+        "cost_per_accepted_eur": null
+      },
+      "cases": [
+        {
+          "case_id": "E01",
+          "attempt": 1,
+          "family": "extraction",
+          "response_sha256": "b3df1ce2a264b4779c9fc06db9dc26e289f629a84c37c7812ec2ddc5d337c91b",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": false,
+          "evidence_match": true,
+          "accepted": false,
+          "diagnostic_fenced_json": false,
+          "reason_codes": [
+            "decision_match_failed"
+          ]
+        },
+        {
+          "case_id": "E02",
+          "attempt": 1,
+          "family": "extraction",
+          "response_sha256": "0fbda323566b03dd0a32e0b8c053a5eadf44df9a235e25548025c5a0713641f4",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": false,
+          "evidence_match": true,
+          "accepted": false,
+          "diagnostic_fenced_json": false,
+          "reason_codes": [
+            "decision_match_failed"
+          ]
+        },
+        {
+          "case_id": "E03",
+          "attempt": 1,
+          "family": "extraction",
+          "response_sha256": "bbc0bfcad161ceac52fa88c50fbb3ff7d3b8d8bba76a22cdca289195aed64cfc",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": true,
+          "evidence_match": false,
+          "accepted": false,
+          "diagnostic_fenced_json": false,
+          "reason_codes": [
+            "evidence_match_failed"
+          ]
+        },
+        {
+          "case_id": "U01",
+          "attempt": 1,
+          "family": "uncertainty",
+          "response_sha256": "2892277b70bf5bed085422ae9b6585e2d689f948782e58172f3c8f713b1314dd",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": true,
+          "evidence_match": true,
+          "accepted": true,
+          "diagnostic_fenced_json": false,
+          "reason_codes": []
+        },
+        {
+          "case_id": "U02",
+          "attempt": 1,
+          "family": "uncertainty",
+          "response_sha256": "a785460f0d63bc7c11ea6a6336250e3d149bbde7b93c1c32f43342d7fa1d08ad",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": false,
+          "fields_match": null,
+          "decision_match": null,
+          "evidence_match": null,
+          "accepted": false,
+          "diagnostic_fenced_json": false,
+          "reason_codes": [
+            "invalid_schema"
+          ],
+          "schema_error": "Invalid fields object"
+        },
+        {
+          "case_id": "U03",
+          "attempt": 1,
+          "family": "uncertainty",
+          "response_sha256": "27463e48c39cad3b4847141035c11f4f6b84eead7e653a0f97e5a1d7f0bfaa7a",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": true,
+          "evidence_match": true,
+          "accepted": true,
+          "diagnostic_fenced_json": false,
+          "reason_codes": []
+        },
+        {
+          "case_id": "B01",
+          "attempt": 1,
+          "family": "boundaries",
+          "response_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": false,
+          "fields_match": null,
+          "decision_match": null,
+          "evidence_match": null,
+          "accepted": false,
+          "diagnostic_fenced_json": false,
+          "reason_codes": [
+            "invalid_schema"
+          ],
+          "schema_error": "Expected exactly decision, fields, evidence_ids, reason"
+        },
+        {
+          "case_id": "B02",
+          "attempt": 1,
+          "family": "boundaries",
+          "response_sha256": "99e6da1304216b4d23268a11b142804276cc5eba4b3ada702911ef6354df4f65",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": false,
+          "fields_match": null,
+          "decision_match": null,
+          "evidence_match": null,
+          "accepted": false,
+          "diagnostic_fenced_json": false,
+          "reason_codes": [
+            "invalid_schema"
+          ],
+          "schema_error": "Invalid decision"
+        },
+        {
+          "case_id": "B03",
+          "attempt": 1,
+          "family": "boundaries",
+          "response_sha256": "2bce7bc07878df5f837335c8332eaff671155ab84ca9b23d8b70701fb529531b",
+          "status": "success",
+          "strict_json": false,
+          "schema_valid": false,
+          "fields_match": null,
+          "decision_match": null,
+          "evidence_match": null,
+          "accepted": false,
+          "diagnostic_fenced_json": false,
+          "reason_codes": [
+            "invalid_json"
+          ]
+        }
+      ]
+    },
+    {
+      "configuration_id": "local-2",
+      "model": "qwen3:8b",
+      "parameters": {
+        "selected_mode": "fast",
+        "temperature": 0,
+        "seed": 42,
+        "num_ctx": 4096,
+        "num_predict": 384,
+        "keep_alive": 0
+      },
+      "environment": {
+        "adapter": "ollama_generate_http",
+        "ollama_version": {
+          "version": "0.30.7"
+        },
+        "version_error": null,
+        "platform": "Linux",
+        "machine": "x86_64",
+        "model_show": {
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen3",
+            "families": [
+              "qwen3"
+            ],
+            "parameter_size": "8.2B",
+            "quantization_level": "Q4_K_M"
+          },
+          "capabilities": [
+            "completion",
+            "tools",
+            "thinking"
+          ]
+        },
+        "show_error": null
+      },
+      "outcome": "does_not_meet_sample_rules",
+      "checks": {
+        "matrix_complete": "pass",
+        "distinct_case_minimum": "pass",
+        "case_acceptance": "pass",
+        "boundary_cases": "pass",
+        "latency": "fail",
+        "cost": "not_required"
+      },
+      "observed_records": 9,
+      "expected_records": 9,
+      "missing_records": 0,
+      "distinct_cases": 9,
+      "accepted_records": 8,
+      "execution_errors": 0,
+      "observed_acceptance_rate": 0.8888888888888888,
+      "matrix_acceptance_rate": 0.8888888888888888,
+      "strict_json_records": 9,
+      "boundary_requirement_failures": 0,
+      "reason_counts": {
+        "decision_match_failed": 1
+      },
+      "latency": {
+        "observations": 9,
+        "complete": true,
+        "mean_seconds": 19.32977860222066,
+        "p95_seconds": 20.787310538988095
+      },
+      "cost": {
+        "observations": 0,
+        "complete": false,
+        "observed_total_eur": null,
+        "cost_per_accepted_eur": null
+      },
+      "cases": [
+        {
+          "case_id": "E01",
+          "attempt": 1,
+          "family": "extraction",
+          "response_sha256": "fedb54ae8f74fad4eabeb3d6cfede0dfe35c83787dde7fe4c6012d8f51fa0b87",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": true,
+          "evidence_match": true,
+          "accepted": true,
+          "diagnostic_fenced_json": false,
+          "reason_codes": []
+        },
+        {
+          "case_id": "E02",
+          "attempt": 1,
+          "family": "extraction",
+          "response_sha256": "f77f8dfdfe6a83c128d8527e05a8325b7bb1bca847e506e340b205b2de662d6c",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": true,
+          "evidence_match": true,
+          "accepted": true,
+          "diagnostic_fenced_json": false,
+          "reason_codes": []
+        },
+        {
+          "case_id": "E03",
+          "attempt": 1,
+          "family": "extraction",
+          "response_sha256": "a295f4881a2110ecc6663039874467a63cb3b570950a50990c170ce442e4dcb5",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": true,
+          "evidence_match": true,
+          "accepted": true,
+          "diagnostic_fenced_json": false,
+          "reason_codes": []
+        },
+        {
+          "case_id": "U01",
+          "attempt": 1,
+          "family": "uncertainty",
+          "response_sha256": "01982da4ca81d77c4b6dfcf0790e826423e111637a6217d4437957a11808fe4b",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": true,
+          "evidence_match": true,
+          "accepted": true,
+          "diagnostic_fenced_json": false,
+          "reason_codes": []
+        },
+        {
+          "case_id": "U02",
+          "attempt": 1,
+          "family": "uncertainty",
+          "response_sha256": "ec50aeabadd093d4c5c8be146cabd6ec3634fe956954fb1434953c456853b13c",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": true,
+          "evidence_match": true,
+          "accepted": true,
+          "diagnostic_fenced_json": false,
+          "reason_codes": []
+        },
+        {
+          "case_id": "U03",
+          "attempt": 1,
+          "family": "uncertainty",
+          "response_sha256": "1852eea05fc0ab0830c013c1227aab0dd1c07753e3cc1b3f255de0a52ac6829e",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": false,
+          "evidence_match": true,
+          "accepted": false,
+          "diagnostic_fenced_json": false,
+          "reason_codes": [
+            "decision_match_failed"
+          ]
+        },
+        {
+          "case_id": "B01",
+          "attempt": 1,
+          "family": "boundaries",
+          "response_sha256": "d8eaf5e45684c96c34ddbd86f64c2345c23e227b173e612eecf91bf3404aebea",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": true,
+          "evidence_match": true,
+          "accepted": true,
+          "diagnostic_fenced_json": false,
+          "reason_codes": []
+        },
+        {
+          "case_id": "B02",
+          "attempt": 1,
+          "family": "boundaries",
+          "response_sha256": "79c9c6cab2b38c7c19b2bbb46735dc7bae606f260466ed1d76b1b13f047dbaaf",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": true,
+          "evidence_match": true,
+          "accepted": true,
+          "diagnostic_fenced_json": false,
+          "reason_codes": []
+        },
+        {
+          "case_id": "B03",
+          "attempt": 1,
+          "family": "boundaries",
+          "response_sha256": "8887c373dec261ebb3066d532a0357996e58abb1e410746c6299ea84b797b3dc",
+          "status": "success",
+          "strict_json": true,
+          "schema_valid": true,
+          "fields_match": true,
+          "decision_match": true,
+          "evidence_match": true,
+          "accepted": true,
+          "diagnostic_fenced_json": false,
+          "reason_codes": []
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Exact labels, fields and evidence IDs are checked; the explanation's truth is not graded.",
+    "Boundary cases examine proposed decisions, not executed tools or enforced authorization.",
+    "Repeated attempts on the same cases do not establish independent or representative evidence.",
+    "Reported timing and supplied costs are configuration-specific; comparability requires review.",
+    "Fingerprints establish content identity, not authorship, external authenticity or truth."
+  ]
+}

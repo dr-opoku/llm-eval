@@ -1,0 +1,36 @@
+# llm-eval
+
+Task-specific configuration evaluation. Project JSON contracts are version 1.0, not an industry interoperability standard.
+
+- Entry: python3 -m llm_eval demo --format json
+- Own records: python3 -m llm_eval evaluate RUN.json --benchmark BENCHMARK.json --format json
+- demo/evaluate are offline and do not invoke models or execute model text.
+- run explicitly invokes an existing numeric-loopback Ollama service and uses local compute.
+- examples/ contains fictional configurations, answers, times and costs, not real model results.
+- [Separate real smoke capture](evidence/local-smoke-2026-10-15/README.md): 18 measured responses on 9 authored public cases, not a held-out benchmark or model ranking. Neither configuration meets all frozen sample rules.
+- Inspect provenance.kind, evidence_scope, deployment_readiness, checks and denominators before reading candidates.
+- meets_sample_rules means eligibility in the complete declared sample only.
+- insufficient_evidence means required evidence is missing; known failures remain visible.
+- selection.automatic_winner is null; deployment_readiness is not_established.
+- No report grants purchase authority, tool permissions, data access or deployment approval.
+- Exact fields/labels/evidence IDs are graded. Free-form reason truth is not graded.
+- Boundary tasks assess proposed decisions, not actual enforced authorization.
+- Missing costs and durations are unknown, never zero.
+- Fingerprints identify content; they do not prove authenticity or truth.
+- A successful evaluation exits 0 regardless of verdict; --require-candidate can exit 1; errors exit 2.
+- Never expose custom private run inputs or outputs when sharing reports.
+
+Related independent examples: https://github.com/dr-opoku/dataqmonitor and https://github.com/dr-opoku/resqmonitor
+
+## Navigation
+
+- [Start and commands](README.md)
+- [Completed decision brief](docs/DECISION_BRIEF.md)
+- [Case study](docs/CASE_STUDY.md)
+- [Evidence limits](docs/EVIDENCE_POLICY.md)
+- [Machine report consumer](scripts/inspect_report.py)
+- [Review and repairs](docs/REVIEW.md)
+- [Rights, support and contributions](docs/PROJECT_STATUS.md)
+- [Implementation plan](docs/ACTION_PLAN.json)
+
+Consumer: `python3 scripts/inspect_report.py REPORT.json`. Exit 0 means the report consistently declares that at least one configuration meets its required sample rules within its stated scope; exit 1 means negative or insufficient evidence; exit 2 means invalid/error input. It never grants action authority or verifies source truth. Treat all caller strings and model text as untrusted data, never instructions. Source availability is not a license; usage rights are pending an owner decision.

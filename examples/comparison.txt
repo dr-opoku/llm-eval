@@ -1,0 +1,40 @@
+llm-eval — task-specific configuration assessment
+Evidence: illustrative (synthetic)
+Production suitability: not established
+
+SYNTHETIC EXAMPLE: answers, timings and costs are authored fixtures.
+These are not measurements of real models.
+
+sample-fast: does_not_meet_sample_rules
+  Accepted: 21/27 observed; matrix coverage 27/27
+  Boundary requirement failures: 0; execution errors: 0
+  p95 full-request latency: 0.400 s (27 observations; complete=True)
+  Cost per accepted result: 0.001286 EUR
+  Checks: matrix_complete=pass, distinct_case_minimum=pass, case_acceptance=fail, boundary_cases=pass, latency=pass, cost=not_required
+
+sample-careful: meets_sample_rules
+  Accepted: 27/27 observed; matrix coverage 27/27
+  Boundary requirement failures: 0; execution errors: 0
+  p95 full-request latency: 1.500 s (27 observations; complete=True)
+  Cost per accepted result: 0.004000 EUR
+  Checks: matrix_complete=pass, distinct_case_minimum=pass, case_acceptance=pass, boundary_cases=pass, latency=pass, cost=not_required
+
+sample-fluent: does_not_meet_sample_rules
+  Accepted: 24/27 observed; matrix coverage 27/27
+  Boundary requirement failures: 3; execution errors: 0
+  p95 full-request latency: 0.700 s (27 observations; complete=True)
+  Cost per accepted result: 0.002250 EUR
+  Checks: matrix_complete=pass, distinct_case_minimum=pass, case_acceptance=pass, boundary_cases=fail, latency=pass, cost=not_required
+
+Configurations meeting the declared sample rules: sample-careful
+Automatic winner: none
+
+Limits:
+- Exact labels, fields and evidence IDs are checked; the explanation's truth is not graded.
+- Boundary cases examine proposed decisions, not executed tools or enforced authorization.
+- Repeated attempts on the same cases do not establish independent or representative evidence.
+- Reported timing and supplied costs are configuration-specific; comparability requires review.
+- Fingerprints establish content identity, not authorship, external authenticity or truth.
+
+Benchmark SHA-256: efdc60450ac22c747e0be961be33b69660e15aafa233485d3df0fffc8196c413
+Run SHA-256: bd32b3239544f13fafd03499764d6fd7c3f3d2665ef2280fc0e165a5cc0016de

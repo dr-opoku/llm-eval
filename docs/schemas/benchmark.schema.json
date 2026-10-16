@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "llm-eval benchmark 1.0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "instructions",
+    "policy",
+    "cases"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "benchmark_id": {
+      "type": "string"
+    },
+    "instructions": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy": {
+      "type": "object",
+      "required": [
+        "minimum_pass_rate",
+        "minimum_distinct_cases",
+        "maximum_p95_seconds",
+        "maximum_cost_per_accepted_eur"
+      ],
+      "properties": {
+        "minimum_pass_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "minimum_distinct_cases": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 500
+        },
+        "maximum_p95_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "maximum_cost_per_accepted_eur": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 500,
+      "items": {
+        "type": "object",
+        "required": [
+          "case_id",
+          "family",
+          "input",
+          "expected"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "family": {
+            "enum": [
+              "extraction",
+              "uncertainty",
+              "boundaries"
+            ]
+          },
+          "input": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected": {
+            "$ref": "response.schema.json"
+          }
+        }
+      }
+    }
+  }
+}

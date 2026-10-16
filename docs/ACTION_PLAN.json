@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "repository": "llm-eval",
+  "baseline_commit": "876d1c15be2c8bcd63ae44c05b53b540f4cb08fe",
+  "date": "2026-10-15",
+  "state": "implemented_and_locally_verified",
+  "goal": "A small, honest, easy-to-inspect professional reference for coordinating evidence-based AI and organizational work, without disclosing private platform IP.",
+  "profile_context": "The owner seeks cross-corporate project/program and transformation assignments including AI. These repositories can demonstrate concrete technical judgment and evidence discipline, not establish unverified CV achievements.",
+  "actions": [
+    {
+      "id": "tests",
+      "action": "Create an offline regression suite covering strict versus fenced JSON, bool versus number, duplicate JSON keys/attempt cells/config IDs, tampered fingerprints, missing matrix cells, execution failures, partial timings/costs, boundary failure, CLI and local-runner loopback/no-redirect/request capture behavior with mocks.",
+      "acceptance": "27 repeat records on 9 cases remain 9 distinct cases; missing evidence never establishes sample eligibility. All attempts including failures retained.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "case",
+      "action": "Add a decision narrative for the synthetic comparison, a reproducibility check for saved examples, and a precise protocol for a future independent task-specific real comparison (frozen development/holdout split, all attempts, conditions and human effort). Assess whether a small real run with already installed models is feasible without downloads; if collected, label the mixed synthetic-task/measured-response provenance accurately.",
+      "acceptance": "Never substitute illustrative timing or costs for measurements. A real run on public authored cases is a smoke run, not a held-out benchmark or general model ranking. No mandatory live calls in default tests or CI.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "defects",
+      "action": "Probe grader and CLI for plausible false-positive acceptance and input-overwrite defects before implementing repairs, including huge numeric input and demo --save-run aliasing benchmark/report.",
+      "acceptance": "False-positive sample eligibility prevented; invalid data yields a structured exit 2, not an unhandled exception; output paths cannot overwrite inputs.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "entry",
+      "action": "Put one safe offline command and a concise expected result near the top; link a readable saved report and a reproducible case study.",
+      "acceptance": "A reader can understand purpose, run command, expected verdict and limits in the first screen.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "consumer",
+      "action": "Add a runnable standard-library JSON report consumer with fail-closed structural checks, distinct error/negative/unknown/sample-met outcomes, tests and an explicit no-action-authority output.",
+      "acceptance": "Exit 0 only for structurally consistent declared sample eligibility, exit 1 for negative/unknown, exit 2 for invalid/error reports. No exit status grants action authority; no source authenticity or underlying-data recomputation is performed.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "navigation",
+      "action": "Use Markdown links in llms.txt, consistent license-pending wording and a prominent modest cross-reference to all three independent showcases; maintain AGENTS.md and project-local showcase.json.",
+      "acceptance": "No invented interoperability standard, purchase permission, software integration or production claim.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "verification",
+      "action": "Add offline CI for Python 3.11 and 3.13 with core/CLI/consumer tests and deterministic example reproduction; no MCP interface exists here.",
+      "acceptance": "No model or credentials required in default CI; read-only token permissions; local test counts and skipped tests reported honestly.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "professional",
+      "action": "Describe the demonstrated work: requirements, explicit decision rules, evidence boundaries, implementation and responsible next steps. Add short support/contribution/security guidance and maintenance scope.",
+      "acceptance": "No unverified CV achievements, customer outcomes, enterprise readiness or commercial demand claims.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "rights",
+      "action": "Keep license unselected; document the owner decisions needed for noncommercial/research/procurement use and future commercial terms. Do not create a LICENSE, checkout, release, price or visibility change.",
+      "acceptance": "No implicit free-use or redistribution grant and no claim that source availability is open source.",
+      "status": "documented_owner_decision_pending"
+    },
+    {
+      "id": "reviewed_repairs",
+      "action": [
+        "Protect bundled benchmark, explicit inputs and save-run/report paths from collisions.",
+        "Handle huge numeric values without an uncaught OverflowError.",
+        "Reject an impossible distinct-case minimum greater than benchmark size.",
+        "Complete cost observations with zero accepted responses fail a required cost gate; the undefined ratio stays null.",
+        "Explain that unknown local costs prevent eligibility only if a cost ceiling is required; never relax the frozen policy after observing outcomes.",
+        "Add offline tests, defensive consumer, frozen future evaluation protocol and a bounded measured smoke capture."
+      ],
+      "acceptance": "Regression tests reproduce the original defects and exercise the repaired behavior; all input files remain byte-identical after refused collisions.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "ci_numeric_reproducibility",
+      "action": "Repair the Python 3.11/3.12 floating-point aggregate discrepancy exposed by the first GitHub example replay; use explicit stable accumulation.",
+      "acceptance": "A focused regression fails before the repair. Stored examples reproduce under both locally available versions; original responses, frozen policy and sample verdicts remain unchanged.",
+      "status": "implemented_and_locally_verified"
+    },
+    {
+      "id": "reference_case_closure",
+      "action": "Present the existing measured capture as a completed decision case, with question, requirements, all failures, limits, proposed accountability and offline replay. Link it for humans and agents.",
+      "acceptance": "Existing 18 measured attempts and all evidence bytes unchanged. No automatic winner; no cost or human-effort inference; no new model in the reference case.",
+      "status": "implemented_and_locally_verified"
+    }
+  ],
+  "pre_edit_gate": "Record baseline tests and one independent Gemini 3.8 Flash review of this plan and supplied source before repository edits. Revise actions against concrete findings.",
+  "publication_gate": [
+    "Owner-selected license and contribution rights",
+    "Owner-approved visibility and release",
+    "Separate evidence for any real customer, commercial or production claim"
+  ],
+  "reference_sources": [
+    "https://github.com/promptfoo/promptfoo",
+    "https://github.com/evidentlyai/evidently",
+    "https://github.com/steipete/oracle",
+    "https://agents.md/"
+  ],
+  "reference_interpretation": "Adopt visible examples, short reproducible entry points, tests and explicit agent guidance. These sources do not prove why users award stars or validate this owner's competence.",
+  "stress_test_decision": {
+    "repository": "llm-eval",
+    "decided_at": "2026-10-15T06:35:13.134936+00:00",
+    "pre_edit_gate": "passed",
+    "repository_unchanged_at_gate": true,
+    "baseline_commit": "876d1c15be2c8bcd63ae44c05b53b540f4cb08fe",
+    "review": {
+      "requested_model": "gemini-3.8-flash-high",
+      "started_at": "2026-10-15T06:27:07.552995+00:00",
+      "finished_at": "2026-10-15T06:31:11.521145+00:00",
+      "exit_code": 0,
+      "repository_files_unchanged": true,
+      "filesystem_protection": "All three repository directories mounted read-only for reviewer process.",
+      "review_scope": "One plan/source-packet review, not execution or independent source authentication."
+    },
+    "accepted": [
+      "Protect bundled benchmark, explicit inputs and save-run/report paths from collisions.",
+      "Handle huge numeric values without an uncaught OverflowError.",
+      "Reject an impossible distinct-case minimum greater than benchmark size.",
+      "Complete cost observations with zero accepted responses fail a required cost gate; the undefined ratio stays null.",
+      "Explain that unknown local costs prevent eligibility only if a cost ceiling is required; never relax the frozen policy after observing outcomes.",
+      "Add offline tests, defensive consumer, frozen future evaluation protocol and a bounded measured smoke capture."
+    ],
+    "rejected_or_bounded": [
+      "The reviewer example demo --benchmark is not a valid CLI invocation; the bundled-fixture collision is nevertheless reproduced separately.",
+      "Do not add tests before the pre-edit gate; baseline absence of a suite and adversarial probes were recorded first.",
+      "No MCP adapter/job for llm-eval; it has no MCP interface.",
+      "Do not replace retained failed attempts with an early silent abort or successful retries.",
+      "The supplied benchmark actually sets maximum_cost_per_accepted_eur to null. The review claim that default local runs necessarily lack cost-required evidence is incorrect. Retain the original pre-collection policy (p95 <= 3.0 seconds; no required cost ceiling)."
+    ],
+    "limits": [
+      "One source-packet plan review; reviewer did not execute tests. Helper implementations and some fixtures were outside the packet; findings were checked against the actual source.",
+      "AGY was requested with selector gemini-3.8-flash-high; no independent attestation of the backend model.",
+      "The original textual review ended inside its final limits section and was not valid complete JSON. Its substantive findings and verdict were available; the original missing wording was not reconstructed. See the separately dated continuation record."
+    ]
+  },
+  "verification": "docs/VERIFICATION.json",
+  "review_continuation": {
+    "completed_at": "2026-10-15T08:07:34.966142+00:00",
+    "same_original_conversation": true,
+    "requested_model": "gemini-3.8-flash-high",
+    "backend_identity_attested": false,
+    "response_complete_valid_json": true,
+    "recovery_kind": "newly_formulated_continuation",
+    "reviewer_executed_tests": false,
+    "repository_unchanged_during_followup": true,
+    "scope": "Continuation of original source-packet review; not a new stress test or review of implemented changes.",
+    "additional_findings": [],
+    "reviewer_statement": "No substantive findings, blockers or plan changes were omitted by truncation.",
+    "adjudication": "Completed scope limits are consistent with the recorded review. No code or implementation-plan changes required; no verbatim recovery claimed.",
+    "details": "docs/REVIEW.md"
+  },
+  "reference_case_finalization": {
+    "date": "2026-10-15T09:06:04.055004+00:00",
+    "pre_edit_stress": "Baseline tests, byte-identical stored-capture replay and unchanged tracked hashes verified before edits. Prior AGY review and recovered continuation remain documented separately.",
+    "scope": "Documentation only: decision brief and navigation. Freeze all evidence files, source code, fixtures, benchmark and sample verdicts. No new models or measurements in the reference.",
+    "state": "implemented_and_locally_verified",
+    "verification": "docs/VERIFICATION.json",
+    "rights": "Owner decision pending; no license grant."
+  }
+}
