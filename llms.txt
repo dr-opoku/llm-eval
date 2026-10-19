@@ -24,6 +24,8 @@ Related independent examples: https://github.com/dr-opoku/dataqmonitor and https
 
 ## Navigation
 
+- [Disclosure review scope, cleanup and limits](docs/DISCLOSURE_REVIEW.md)
+
 - [Start and commands](README.md)
 - [Completed decision brief](docs/DECISION_BRIEF.md)
 - [Case study](docs/CASE_STUDY.md)

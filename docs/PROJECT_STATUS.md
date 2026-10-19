@@ -6,6 +6,14 @@ This is a small reference implementation. Maintenance is best effort; there is n
 
 The [decision brief](DECISION_BRIEF.md) closes the case using the existing nine authored tasks and 18 measured responses. Neither configuration meets all frozen sample rules. No extra models or measurements are needed to present that conclusion. Completion of this bounded reference does not establish production suitability or grant rights beyond the license.
 
+## Disclosure preparation
+
+The [19 October disclosure review](DISCLOSURE_REVIEW.md) records the inspected
+Git history, Actions logs, GitHub discussion surfaces and cleanup. Merged branch
+tips and earlier verification records remain traceable; private audit backups
+are kept outside the repository. Visibility remains an owner decision. Public
+source publication and deployment of the compiled interface have separate limits.
+
 ## Current license
 
 The owner-selected [Noncommercial Local Use License 1.1.0](../LICENSE.md) applies. This is a custom source-available license, not an open-source license. It permits private local use and modification for qualifying noncommercial purposes. Software redistribution, publication of modified copies and services for other users require separate written permission, subject to the hosting-platform and statutory rights reserved in the license. Commercial use requires a separate written license.
