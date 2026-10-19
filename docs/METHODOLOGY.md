@@ -51,3 +51,7 @@ Cost per accepted result is **the sum of supplied costs for ALL declared attempt
 The report provides candidate IDs, with no automatic winner. Model weights/quantization, adapter instructions, context allocation, hardware, host load, timing scope and cost accounting must be comparable before a purchasing conclusion is drawn. A model label is not a verified model identity.
 
 For a real decision add representative held-out tasks, independent review of answer keys, actual prices, deployment requirements and separate authorization/tool-execution checks. No benchmark score authorizes an agent to act.
+
+## Decoder-depth failures
+
+A response that exceeds the JSON decoder's supported nesting depth is a failed attempt (`invalid_json`), including inside a diagnostic Markdown fence. It is not an evaluation-wide input error. The original saved response and its fingerprint remain unchanged; other attempts and configurations are still evaluated. This describes bounded local parser behavior, not a universal JSON nesting limit.

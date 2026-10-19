@@ -1,5 +1,6 @@
 """CLI, defensive consumer and local runner tests; all model requests mocked."""
 import copy
+import hashlib
 import importlib.util
 import io
 import json
@@ -44,6 +45,25 @@ class InterfaceTests(unittest.TestCase):
             self.assertEqual(self.cli(['demo', '--save-run', str(run), '--output', str(report), '--format', 'html'])[0], 0)
             self.assertIn('<!doctype html>', report.read_text())
             self.assertEqual(self.cli(['evaluate', str(run)])[0], 0)
+
+    def test_deeply_nested_answer_still_produces_complete_cli_report(self):
+        nested = '{"x":' + '[' * 100_000 + '0' + ']' * 100_000 + '}'
+        for raw in (nested, '```json\n' + nested + '\n```'):
+            with self.subTest(fenced=raw.startswith('```')), TemporaryDirectory() as directory:
+                run = copy.deepcopy(self.run)
+                record = run['configurations'][1]['records'][0]
+                record['response'] = raw
+                record['response_sha256'] = hashlib.sha256(raw.encode()).hexdigest()
+                path = Path(directory) / 'run.json'
+                path.write_text(json.dumps(run))
+                before = path.read_bytes()
+                code, out, err = self.cli(['evaluate', str(path), '--format', 'json'])
+                self.assertEqual(code, 0)
+                self.assertEqual(err, '')
+                report = json.loads(out)
+                self.assertEqual(len(report['configurations']), 3)
+                self.assertEqual(report['configurations'][1]['reason_counts']['invalid_json'], 1)
+                self.assertEqual(path.read_bytes(), before)
 
     def test_all_input_path_aliases_refused_without_mutation(self):
         for alias in ('same', 'symlink', 'hardlink'):

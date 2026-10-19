@@ -25,4 +25,4 @@ It is one serial local run with one attempt per case/configuration, no held-out 
 
 New real measurements should keep their original task version, run conditions and provenance. A new dataset derived from private work needs a content review before publication. Replacing identifiers alone may leave internal semantics or operating assumptions exposed.
 
-No redistribution license has been selected in this implementation. Repository visibility and license selection remain separate owner decisions.
+The owner-selected [Noncommercial Local Use License 1.0.0](../LICENSE.md) is included. It covers rights held by the licensor and does not replace third-party terms. Repository visibility is a separate owner decision; see [current publication findings](PUBLICATION_STATUS.md).

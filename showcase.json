@@ -8,7 +8,7 @@
   "demo_network_required": false,
   "demo_provenance": "synthetic",
   "production_suitability": "not_established",
-  "license_status": "not_selected",
+  "license_status": "selected",
   "related_repositories": [
     "https://github.com/dr-opoku/dataqmonitor",
     "https://github.com/dr-opoku/resqmonitor"
@@ -29,5 +29,15 @@
     "authenticity_verified": false
   },
   "decision_brief": "docs/DECISION_BRIEF.md",
-  "reference_case_status": "complete_within_declared_scope"
+  "reference_case_status": "complete_within_declared_scope",
+  "license": {
+    "status": "selected",
+    "name": "Noncommercial Local Use License 1.0.0",
+    "identifier": "LicenseRef-Noncommercial-Local-Use-1.0.0",
+    "file": "LICENSE.md",
+    "open_source": false,
+    "commercial_use": "separate_written_license_required",
+    "redistribution": "separate_written_permission_required_subject_to_reserved_rights"
+  },
+  "publication_status": "docs/PUBLICATION_STATUS.md"
 }

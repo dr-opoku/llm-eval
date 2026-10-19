@@ -66,7 +66,7 @@
   "scope_limits": [
     "Tests establish declared implementation behavior, not reference-label truth or representative performance.",
     "The JSON consumer checks internal structure, not authenticity or original-data correctness.",
-    "Licensing, contribution rights and public release remain owner decisions."
+    "The current license is LICENSE.md. Tests do not establish legal sufficiency; additional permissions, contribution terms and public release require owner decisions."
   ],
   "packaging": {
     "state": "passed",
@@ -124,5 +124,33 @@
     "new_reference_attempts": 0,
     "new_reference_models": 0,
     "decision_brief": "DECISION_BRIEF.md"
+  },
+  "publication_followup_2026_10_19": {
+    "checked_at": "2026-10-19T15:07:39.793688+00:00",
+    "python": "3.12.3",
+    "tests": {
+      "discovered": 39,
+      "passed": 39,
+      "failed": 0,
+      "skipped": 0
+    },
+    "saved_reports": "reproduced_unchanged",
+    "wheel_build": "passed",
+    "sdist_build": "passed",
+    "packaged_license": "byte_identical_to_owner_selected_license",
+    "license_sha256": "68cd76079c348fcd30477d4d8ea2912b3b30e7b8697a29fa16d3fba8818423da",
+    "license_expression": "LicenseRef-Noncommercial-Local-Use-1.0.0",
+    "wheel_source_and_fixtures": "byte_identical_to_checkout",
+    "wheel_demo_scenarios_outside_checkout": 2,
+    "local_document_targets_checked": 81,
+    "live_model_calls": false,
+    "existing_evidence_and_examples_changed": false,
+    "verification_scope": "Current local tests, deterministic replay, build metadata, license inclusion and wheel demos. Earlier CI and packaging records above remain historical; no new hosted CI result is asserted here.",
+    "decoder_depth_regression": {
+      "new_test_methods": 3,
+      "raw_and_fenced_responses": true,
+      "grading_tests_failed_before_fix": 2,
+      "original_capture_unchanged": true
+    }
   }
 }

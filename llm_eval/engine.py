@@ -18,13 +18,13 @@ def grade(case, raw):
     try:
         parsed = parse_json(raw.strip())
         result["strict_json"] = True
-    except ValueError:
+    except (ValueError, RecursionError):
         fence = re.fullmatch(r"\s*```(?:json)?\s*(\{.*\})\s*```\s*", raw, re.S | re.I)
         if fence:
             try:
                 parsed = parse_json(fence.group(1))
                 result["diagnostic_fenced_json"] = True
-            except ValueError:
+            except (ValueError, RecursionError):
                 result["reason_codes"].append("invalid_json")
                 return result
         else:
