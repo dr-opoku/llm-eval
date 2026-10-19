@@ -152,5 +152,39 @@
       "grading_tests_failed_before_fix": 2,
       "original_capture_unchanged": true
     }
+  },
+  "integration_followup_2026_10_19": {
+    "checked_at": "2026-10-19T15:31:21.557681+00:00",
+    "python": "3.12.3",
+    "tests": {
+      "discovered": 41,
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0
+    },
+    "pre_fix_regressions_observed": 1,
+    "pre_fix_scope": "Growing file with understated initial size",
+    "saved_reports": "reproduced_unchanged",
+    "input_fixtures_unchanged": true,
+    "measured_evidence_unchanged": true,
+    "baseline_files_checked": 12,
+    "metric_status_policy_fingerprint_changes": false,
+    "wheel_build": "passed",
+    "sdist_build": "passed",
+    "packaged_license": "byte_identical_across_three_showcases",
+    "license_sha256": "e905a371df79c02ad7c120bbb96ebcbfa8955113168333360795c5bb760b8310",
+    "license_expression": "LicenseRef-Noncommercial-Local-Use-1.1.0",
+    "license_change": "Owner-approved completed report exception for noncommercial copying, display and distribution only",
+    "dev_train_license_modified": false,
+    "wheel_source_and_fixtures": "byte_identical_to_checkout",
+    "wheel_demo_scenarios_without_site_packages": 2,
+    "local_document_targets_checked": 82,
+    "live_model_calls": false,
+    "verification_scope": "Local tests, deterministic replay, unchanged fixtures/capture, exact scope-note-only example diffs, wheel/sdist metadata and packaged license, demos without site packages. New hosted CI is checked separately before merge; no new external-model review is claimed.",
+    "bounded_json_input": {
+      "read_at_most_limit_plus_one": true,
+      "overflow_rejected_before_decoding_and_parsing": true,
+      "exact_boundary_and_one_byte_over_tested": true
+    }
   }
 }

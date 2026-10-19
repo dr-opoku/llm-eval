@@ -7,7 +7,7 @@ name = "llm-eval-showcase"
 version = "0.1.0"
 description = "A small, evidence-aware example of selecting an LLM configuration for a bounded business task."
 readme = "README.md"
-license = "LicenseRef-Noncommercial-Local-Use-1.0.0"
+license = "LicenseRef-Noncommercial-Local-Use-1.1.0"
 license-files = ["LICENSE.md"]
 requires-python = ">=3.11"
 authors = [{name = "Dr. Daniel Opoku"}]

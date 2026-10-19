@@ -55,3 +55,7 @@ For a real decision add representative held-out tasks, independent review of ans
 ## Decoder-depth failures
 
 A response that exceeds the JSON decoder's supported nesting depth is a failed attempt (`invalid_json`), including inside a diagnostic Markdown fence. It is not an evaluation-wide input error. The original saved response and its fingerprint remain unchanged; other attempts and configurations are still evaluated. This describes bounded local parser behavior, not a universal JSON nesting limit.
+
+## Local input byte limit
+
+Benchmark and saved-run JSON inputs are limited to 20,000,000 bytes. The reader checks initial size and reads at most the limit plus one byte, rejecting overflow before decoding or parsing. This also covers files whose content grows beyond the initial size check. The bound limits input bytes read; decoded JSON structures may use more memory, and this is not a total memory or execution-time budget.
