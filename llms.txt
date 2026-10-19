@@ -28,6 +28,7 @@ Related independent examples: https://github.com/dr-opoku/dataqmonitor and https
 - [Completed decision brief](docs/DECISION_BRIEF.md)
 - [Case study](docs/CASE_STUDY.md)
 - [Evidence limits](docs/EVIDENCE_POLICY.md)
+- [Historical model artifact identifiers and separate model terms](evidence/local-smoke-2026-10-15/PROVENANCE.md)
 - [Machine report consumer](scripts/inspect_report.py)
 - [Review and repairs](docs/REVIEW.md)
 - [Rights, support and contributions](docs/PROJECT_STATUS.md)

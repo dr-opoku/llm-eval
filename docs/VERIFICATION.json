@@ -186,5 +186,18 @@
       "overflow_rejected_before_decoding_and_parsing": true,
       "exact_boundary_and_one_byte_over_tested": true
     }
+  },
+  "artifact_provenance_followup_2026_10_19": {
+    "checked_at": "2026-10-19T16:01:28.659462+00:00",
+    "scope": "Documentation and retained-evidence consistency checks; no new implementation regression suite or external-model review.",
+    "historical_records_probes_parameters_match_public_export": true,
+    "historical_license_hashes_match_manifest_blobs": true,
+    "current_manifests_match_historical_inventory": true,
+    "weight_hash_verification": "Full-file SHA-256 verification performed in the preceding local provenance review on 19 October; matching identifiers are documented in the supplement.",
+    "original_capture_and_derived_reports_unchanged": true,
+    "evaluator_license_unchanged": true,
+    "live_model_calls": false,
+    "new_models_or_measurements": false,
+    "provenance_note": "../evidence/local-smoke-2026-10-15/PROVENANCE.md"
   }
 }

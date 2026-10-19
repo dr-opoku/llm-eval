@@ -11,10 +11,12 @@ This folder contains an inspected export of **new local requests**, not historic
 - Three mode probes per model and inventory calls are outside task metrics. Their records remain visible.
 - Costs and human work time are unmeasured. The frozen policy has no required cost ceiling; adding one would require a separately identified evaluation policy.
 - The runner reports generic OS/architecture and Ollama version. This export omits model files, templates/system settings, license text and tensor inventory from `model_show`, retaining only details/capabilities. No server inventory or private host snapshot is published.
-- Weight digests and hardware execution placement were not independently pinned or verified. Model tags can change. Host activity was not controlled or instrumented continuously, configuration order was not randomized, and repetition/variance were not studied.
+- The [19 October provenance follow-up](PROVENANCE.md) recovers historical model-file references and license texts, records matching manifest identifiers in an August inventory, and verifies the current local weight files against those references by SHA-256. This identifies the declared artifacts; independent attestation of the bytes loaded during the original inference and hardware execution placement remains unavailable. Model tags can change. Host activity was not controlled or instrumented continuously, configuration order was not randomized, and repetition/variance were not studied.
 
 [run.json](run.json) preserves every task request, full answer, error field, available timings and fingerprints. `publication_note` discloses the metadata reduction. Fingerprints identify this exported content, not source authenticity. The private original capture is outside the repository; no private task transcripts were used.
 
 [benchmark.json](benchmark.json) preserves the pre-collection policy and answer key. Expected answers were not sent in task requests. [report.json](report.json), [report.txt](report.txt) and [report.html](report.html) are derived offline and checked by `python3 scripts/reproduce_examples.py --check` from the repository root.
+
+The evaluation software's license is separate from the terms of models used for response collection. This repository distributes no weights, and replaying its stored responses does not invoke a model. See [artifact identifiers, license references and reconstruction limits](PROVENANCE.md).
 
 This is a collection/evaluation smoke run, **not** an independent held-out benchmark, a model ranking or a deployment recommendation. Neither configuration meets the frozen sample rules, and no policy was adjusted to make either pass.

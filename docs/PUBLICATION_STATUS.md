@@ -21,9 +21,11 @@ An individually bounded model response with 100,000 nested arrays reproduced a `
 
 Three focused regression methods cover raw/fenced grading, unchanged other attempts/configurations and the end-to-end CLI report. Two grading tests were observed failing against the old implementation before the fix. Normal CLI exit 0 means the evaluation completed, not that every attempt passed. `--require-candidate` retains its documented meaning.
 
-### Still present; model provenance needs separate review
+### Model provenance supplemented; evaluator and model rights are separate
 
-The measured example names `qwen2.5:3b-instruct-q4_K_M` and `qwen3:8b`. The upstream [Qwen2.5-3B-Instruct model card](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct) identifies `qwen-research`, while [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B) identifies Apache-2.0 (checked 19 October 2026). Do not describe all Qwen models as Apache-licensed. These upstream pages do not attest the exact historical quantized artifact used in the capture. The repository license does not replace model terms; this note does not assert that model-weight terms automatically apply to generated responses. Establishing the historical artifact's provenance and any applicable publication conditions remains a separate task. Existing capture and failure evidence remain unchanged.
+The [dated artifact provenance supplement](../evidence/local-smoke-2026-10-15/PROVENANCE.md) identifies the manifest, quantized-file and license-text SHA-256 digests for `qwen2.5:3b-instruct-q4_K_M` and `qwen3:8b`. Historical metadata and an August inventory agree with the current manifests; full-file hashing verifies the current weight files against the historical references. Captured license text identifies Qwen Research and Apache-2.0 respectively. This corrects the previous incomplete description of the available artifact evidence. Original download details, exact upstream revisions and independent attestation of historical execution remain unestablished. Existing responses, failures and reports remain unchanged.
+
+The license chosen for the author's evaluation software is separate from the licenses of the models used to collect example responses. Commercial licensing of those example models is not a prerequisite for choosing or separately licensing the author's own evaluator. That choice grants no model-use rights. This repository distributes no model weights, and offline report replay does not invoke a model. Applicable model terms govern new live collection; third-party report/data rights are assessed separately.
 
 ### Corrected input-read limit
 
@@ -31,6 +33,6 @@ The local JSON reader now reads at most `MAX_FILE_BYTES + 1` bytes and rejects o
 
 ### Practical follow-up for the measured model evidence
 
-The capture is usable as a transparently limited historical reference; no new benchmark is needed to document these limits. Before describing this as commercially cleared model evidence, confirm the original use purpose and applicable model permissions, and recover immutable artifact identity/source/license evidence if available. Do not substitute today's installed tag or an unrelated upstream revision for the historical artifact. If no contemporaneous evidence exists, retain the unknown and document it; preserve every original response/failure and do not retroactively relabel the run. Model terms are separate from the evaluator license. See the [provenance checklist](PROVENANCE.md#model-artifact-and-rights-checklist).
+The capture is usable as a transparently limited historical reference; no new benchmark is needed for the provenance supplement. Retain the recovered identifiers alongside the original evidence and describe the remaining reconstruction limits without retroactively changing the run. Any additional historical receipt can be added as separately dated evidence after verification. Model terms remain separate from the evaluator license. See the [provenance checklist](PROVENANCE.md#model-artifact-and-rights-checklist).
 
 The 18 measured responses on nine authored tasks remain a bounded reference case, not a representative benchmark or a deployment recommendation. No new model or measurement was added.

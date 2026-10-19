@@ -180,5 +180,13 @@
     ],
     "verification": "VERIFICATION.json",
     "repository_visibility": "unchanged"
+  },
+  "artifact_provenance_followup_2026_10_19": {
+    "scope": "Documentation-only retrospective provenance supplement; existing capture, benchmark, reports, source, license and sample outcomes unchanged.",
+    "pre_edit_consistency_review": "Rechecked original/public records, probes, parameters, benchmark identity, captured license hashes and manifest identifiers against retained evidence before edits. Historical external reviews are not new reviews of this supplement.",
+    "provenance_note": "../evidence/local-smoke-2026-10-15/PROVENANCE.md",
+    "rights_boundary": "The license chosen for author-owned evaluation software is separate from model licenses; no model-use rights are granted by the evaluator license.",
+    "state": "implemented",
+    "repository_visibility": "unchanged"
   }
 }
