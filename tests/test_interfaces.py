@@ -1,5 +1,6 @@
 """CLI, defensive consumer and local runner tests; all model requests mocked."""
 import copy
+import hashlib
 import importlib.util
 import io
 import json
@@ -9,9 +10,11 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
+from types import SimpleNamespace
 from llm_eval import runner
 from llm_eval.cli import main, _checkpoint, _protect_output
 from llm_eval.contracts import fixture, fingerprint
+from llm_eval.contracts import read_json
 from llm_eval.demo import demonstration
 from llm_eval.engine import evaluate
 
@@ -21,6 +24,26 @@ consumer = importlib.util.module_from_spec(spec);spec.loader.exec_module(consume
 
 
 class InterfaceTests(unittest.TestCase):
+    def test_input_limit_is_enforced_by_read_not_only_earlier_file_size(self):
+        # Simulate a file that grows after stat: the initial metadata looks small.
+        with patch('llm_eval.contracts.MAX_FILE_BYTES', 8), \
+             patch.object(Path, 'stat', return_value=SimpleNamespace(st_size=2)), \
+             patch.object(Path, 'open') as opened:
+            stream = opened.return_value.__enter__.return_value
+            stream.read.return_value = b' ' * 9
+            with self.assertRaisesRegex(ValueError, 'exceeds 8 bytes'):
+                read_json('growing.json')
+            stream.read.assert_called_once_with(9)
+
+    def test_input_byte_limit_allows_exact_boundary_and_rejects_one_more_byte(self):
+        with TemporaryDirectory() as directory, patch('llm_eval.contracts.MAX_FILE_BYTES', 8):
+            path = Path(directory) / 'bounded.json'
+            path.write_bytes(b'{"n": 1}')
+            self.assertEqual(read_json(path), {'n': 1})
+            path.write_bytes(b'{"n": 1} ')
+            with self.assertRaisesRegex(ValueError, 'exceeds 8 bytes'):
+                read_json(path)
+
     def setUp(self):
         self.benchmark = fixture('benchmark.json')
         self.run = demonstration(self.benchmark)
@@ -44,6 +67,25 @@ class InterfaceTests(unittest.TestCase):
             self.assertEqual(self.cli(['demo', '--save-run', str(run), '--output', str(report), '--format', 'html'])[0], 0)
             self.assertIn('<!doctype html>', report.read_text())
             self.assertEqual(self.cli(['evaluate', str(run)])[0], 0)
+
+    def test_deeply_nested_answer_still_produces_complete_cli_report(self):
+        nested = '{"x":' + '[' * 100_000 + '0' + ']' * 100_000 + '}'
+        for raw in (nested, '```json\n' + nested + '\n```'):
+            with self.subTest(fenced=raw.startswith('```')), TemporaryDirectory() as directory:
+                run = copy.deepcopy(self.run)
+                record = run['configurations'][1]['records'][0]
+                record['response'] = raw
+                record['response_sha256'] = hashlib.sha256(raw.encode()).hexdigest()
+                path = Path(directory) / 'run.json'
+                path.write_text(json.dumps(run))
+                before = path.read_bytes()
+                code, out, err = self.cli(['evaluate', str(path), '--format', 'json'])
+                self.assertEqual(code, 0)
+                self.assertEqual(err, '')
+                report = json.loads(out)
+                self.assertEqual(len(report['configurations']), 3)
+                self.assertEqual(report['configurations'][1]['reason_counts']['invalid_json'], 1)
+                self.assertEqual(path.read_bytes(), before)
 
     def test_all_input_path_aliases_refused_without_mutation(self):
         for alias in ('same', 'symlink', 'hardlink'):

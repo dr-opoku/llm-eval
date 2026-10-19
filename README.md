@@ -4,6 +4,8 @@
 
 A small, standalone example of assessing configurations before adopting them in a workflow. It separates correct fields, usable output, handling of uncertainty, proposed action boundaries, full-request latency and supplied costs. A completed request is not an accepted result.
 
+**Usage:** private local noncommercial use is permitted under the [license](LICENSE.md). Business evaluation for a commercial application requires separate written permission; see [usage guidance](docs/PROJECT_STATUS.md).
+
 ## Try it in one command
 
 Requires **Python 3.11 or newer**. From this repository directory:
@@ -155,4 +157,4 @@ See the [action plan](docs/ACTION_PLAN.json), [pre-change stress test and indepe
 
 This is newly written, self-contained code. The method is informed by earlier private benchmarking work, but no private task corpus, platform implementation, internal ontology, host snapshot or historical model output is included. The synthetic demo makes no claim about real-model performance. The separately labeled new smoke capture supports only the observations and frozen sample verdicts stated in its provenance; it is not a general ranking. See [provenance](docs/PROVENANCE.md).
 
-Initial showcase implementation. A redistribution license has not yet been selected; license selection remains an owner decision before public release. Repository visibility is managed separately from this implementation.
+Licensed under the [Noncommercial Local Use License 1.1.0](LICENSE.md): private local noncommercial use and modification are permitted; software redistribution requires separate written permission, subject to reserved platform/statutory rights; completed reports may be copied, displayed and shared for noncommercial purposes under section 3; commercial use requires a separate written license. This is source-available, not open source. See [usage, evaluation and contribution guidance](docs/PROJECT_STATUS.md) and [current publication findings](docs/PUBLICATION_STATUS.md). Repository visibility is a separate owner decision.

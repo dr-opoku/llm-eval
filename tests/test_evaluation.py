@@ -52,6 +52,39 @@ class EvaluationTests(unittest.TestCase):
         self.assertTrue(result['schema_valid'])
         self.assertFalse(result['accepted'])
 
+    def test_deeply_nested_answer_is_individually_rejected(self):
+        # Stay below the response-size bound while exceeding decoder depth.
+        nested = '{"x":' + '[' * 100_000 + '0' + ']' * 100_000 + '}'
+        for raw in (nested, '```json\n' + nested + '\n```'):
+            with self.subTest(fenced=raw.startswith('```')):
+                result = grade(self.benchmark['cases'][0], raw)
+                self.assertFalse(result['accepted'])
+                self.assertFalse(result['strict_json'])
+                self.assertFalse(result['diagnostic_fenced_json'])
+                self.assertEqual(result['reason_codes'], ['invalid_json'])
+
+    def test_deeply_nested_answer_does_not_abort_other_attempts(self):
+        nested = '{"x":' + '[' * 100_000 + '0' + ']' * 100_000 + '}'
+        baseline = evaluate(self.benchmark, self.run)
+        for raw in (nested, '```json\n' + nested + '\n```'):
+            with self.subTest(fenced=raw.startswith('```')):
+                run = copy.deepcopy(self.run)
+                record = run['configurations'][1]['records'][0]
+                record['response'] = raw
+                record['response_sha256'] = hashlib.sha256(raw.encode()).hexdigest()
+                before = copy.deepcopy(run)
+                report = evaluate(self.benchmark, run)
+                changed = report['configurations'][1]
+                self.assertEqual(changed['accepted_records'], 26)
+                self.assertEqual(changed['observed_records'], 27)
+                self.assertEqual(changed['expected_records'], 27)
+                self.assertEqual(changed['reason_counts']['invalid_json'], 1)
+                self.assertEqual(changed['cases'][0]['response_sha256'], record['response_sha256'])
+                self.assertEqual(changed['cases'][1:], baseline['configurations'][1]['cases'][1:])
+                for index in (0, 2):
+                    self.assertEqual(report['configurations'][index], baseline['configurations'][index])
+                self.assertEqual(run, before)
+
     def test_strict_shape_boolean_and_huge_number(self):
         case = self.benchmark['cases'][0]
         for key, value in [('units', True), ('unit_price_eur', True), ('unit_price_eur', 10**400), ('unit_price_eur', float('inf'))]:

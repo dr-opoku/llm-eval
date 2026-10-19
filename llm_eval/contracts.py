@@ -33,7 +33,11 @@ def read_json(path):
     path = Path(path)
     if path.stat().st_size > MAX_FILE_BYTES:
         raise ValueError(f"Input exceeds {MAX_FILE_BYTES} bytes")
-    return parse_json(path.read_text(encoding="utf-8"))
+    with path.open("rb") as stream:
+        data = stream.read(MAX_FILE_BYTES + 1)
+    if len(data) > MAX_FILE_BYTES:
+        raise ValueError(f"Input exceeds {MAX_FILE_BYTES} bytes")
+    return parse_json(data.decode("utf-8"))
 
 
 def fixture(name):

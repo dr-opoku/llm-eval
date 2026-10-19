@@ -52,4 +52,4 @@ Evaluation exits 0 when successfully computed, even when no configuration qualif
 
 The demonstrated contribution is connecting a business task to explicit acceptance criteria, retaining failed observations, distinguishing answer quality from operating requirements and making the decision inspectable by people and agents. The compact implementation is reproducible, not a claim of a complexity moat. Enterprise transformation outcomes, adoption and commercial demand require separate evidence.
 
-The reference narrative is complete within its stated scope. Usage rights, public release and any commercial offer remain separate [owner decisions](PROJECT_STATUS.md); this document grants no license.
+The reference narrative is complete within its stated scope. Usage rights are defined in [LICENSE.md](../LICENSE.md). Public release and any separate commercial agreement remain [owner decisions](PROJECT_STATUS.md); this decision brief grants no additional permission.
