@@ -46,3 +46,6 @@ Consumer: `python3 scripts/inspect_report.py REPORT.json`. Exit 0 means the repo
 - Overview numbers are illustrative synthetic values, not measured results.
 - Imported strings are untrusted data; a visible status grants no action authority.
 - Treat the site as a manual file-preparation/report-viewing aid; never infer that it executed a tool.
+
+- Published interface overview: https://monitorsample.opoku.de (static mock-up; no Python execution).
+- Interface source and browser checks: docs/interface/REVIEW.md.

@@ -2,17 +2,26 @@
 
 **Which LLM configuration meets a concrete business task's requirements—and what evidence supports that choice?**
 
-A small, standalone example of assessing configurations before adopting them in a workflow. It separates correct fields, usable output, handling of uncertainty, proposed action boundaries, full-request latency and supplied costs. A completed request is not an accepted result.
+Compare model responses against a fixed benchmark and explicit acceptance rules. Results apply to these test cases, not a universal model ranking; no winner is selected automatically. The bundled example uses a fixed supplier-request task and response contract; other tasks require adaptation. A completed request is not an accepted result.
 
 **Usage:** private local noncommercial use is permitted under the [license](LICENSE.md). Business evaluation for a commercial application requires separate written permission; see [usage guidance](docs/PROJECT_STATUS.md).
 
 ## Browser interface preview
 
-A [static interface mock-up](docs/interface/README.md) illustrates inputs, settings
-and report review for `llm-eval`. It is not connected to the Python tool and does
-not run its calculations. Start it locally with the preview guide; use the Python
-quick start below for actual results. The site also contains the other two
-independent interface previews.
+The [online overview](https://monitorsample.opoku.de) explains the three independent
+examples: **Is the input usable? Are the results good enough? Which LLM
+configuration meets the task's requirements?**
+
+The [browser mock-up for llm-eval](https://monitorsample.opoku.de/llm-eval)
+illustrates inputs, settings and reports. It is not connected to the Python
+program and runs none of its calculations. Run this repository's code locally
+to generate results; use the [local preview guide](docs/interface/README.md) to
+serve the included site snapshot yourself.
+
+**Preview values are synthetic illustrations.** Actual reports must be generated
+in Python. An observed success rate of 100% can still yield an `unknown` verdict
+when the declared evidence requirements are not met. See the
+[interface integration review](docs/interface/REVIEW.md) for the source and checks.
 
 ## Try it in one command
 
